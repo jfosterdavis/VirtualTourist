@@ -16,6 +16,8 @@
 		F67A76501D9D78A200C7AF73 /* Virtual_TouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A764F1D9D78A200C7AF73 /* Virtual_TouristTests.swift */; };
 		F67A765B1D9D78A200C7AF73 /* Virtual_TouristUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A765A1D9D78A200C7AF73 /* Virtual_TouristUITests.swift */; };
 		F67A766D1D9D79CC00C7AF73 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F67A766C1D9D79CC00C7AF73 /* .gitignore */; };
+		F67A766F1D9D7A7700C7AF73 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F67A766E1D9D7A7700C7AF73 /* README.md */; };
+		F67A76711D9D7AED00C7AF73 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F67A76701D9D7AED00C7AF73 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		F67A765A1D9D78A200C7AF73 /* Virtual_TouristUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Virtual_TouristUITests.swift; sourceTree = "<group>"; };
 		F67A765C1D9D78A200C7AF73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F67A766C1D9D79CC00C7AF73 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		F67A766E1D9D7A7700C7AF73 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F67A76701D9D7AED00C7AF73 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,8 @@
 				F67A766A1D9D78EB00C7AF73 /* Assets */,
 				F67A76461D9D78A200C7AF73 /* Info.plist */,
 				F67A766C1D9D79CC00C7AF73 /* .gitignore */,
+				F67A766E1D9D7A7700C7AF73 /* README.md */,
+				F67A76701D9D7AED00C7AF73 /* LICENSE */,
 			);
 			name = Supporting;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 				F67A76451D9D78A200C7AF73 /* LaunchScreen.storyboard in Resources */,
 				F67A76421D9D78A200C7AF73 /* Assets.xcassets in Resources */,
 				F67A763D1D9D78A200C7AF73 /* Main.storyboard in Resources */,
+				F67A76711D9D7AED00C7AF73 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +310,7 @@
 			files = (
 				F67A763A1D9D78A200C7AF73 /* ViewController.swift in Sources */,
 				F67A76401D9D78A200C7AF73 /* Virtual_Tourist.xcdatamodeld in Sources */,
+				F67A766F1D9D7A7700C7AF73 /* README.md in Sources */,
 				F67A76381D9D78A200C7AF73 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
