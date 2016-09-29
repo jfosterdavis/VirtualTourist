@@ -35,7 +35,8 @@ class TourMapViewController: UIViewController, MKMapViewDelegate, UIGestureRecog
         
         //add tap recognition
         //adapted from http://stackoverflow.com/questions/34431459/ios-swift-how-to-add-pinpoint-to-map-on-touch-and-get-detailed-address-of-th
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(gestureReconizer:)))
+        // http://stackoverflow.com/questions/30858360/adding-a-pin-annotation-to-a-map-view-on-a-long-press-in-swift
+        let gestureRecognizer = VTLongPressGR(target: self, action: #selector(handleTap(gestureReconizer:)))
         gestureRecognizer.delegate = self
         mapView.addGestureRecognizer(gestureRecognizer)
     }
@@ -80,17 +81,9 @@ class TourMapViewController: UIViewController, MKMapViewDelegate, UIGestureRecog
      */
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            //let app = UIApplication.shared
-//            if let toOpen = view.annotation?.subtitle! {
-//                if let url = URL(string: toOpen) {
-//                    app.openURL(url)
-//                } else {
-//                    print("Cannot open a blank URL")
-//                }
-//                
-//            } else {
-//                print("Failed to open view annotation")
-//            }
+            //TODO: segue to collection
+           
+            
         }
     }
     
@@ -100,15 +93,20 @@ class TourMapViewController: UIViewController, MKMapViewDelegate, UIGestureRecog
     //MARK: - GestureHandlerDelegate
     
     //adapted from http://stackoverflow.com/questions/34431459/ios-swift-how-to-add-pinpoint-to-map-on-touch-and-get-detailed-address-of-th
-    func handleTap(gestureReconizer: UILongPressGestureRecognizer) {
+    func handleTap(gestureReconizer: VTLongPressGR) {
         
-        let location = gestureReconizer.location(in: mapView)
-        let coordinate = mapView.convert(location,toCoordinateFrom: mapView)
+        //only handle the start of this event to avoid tons of pins being dropped
+        //http://stackoverflow.com/questions/3319591/uilongpressgesturerecognizer-gets-called-twice-when-pressing-down
+        if (gestureReconizer.state == UIGestureRecognizerState.began){
         
-        // Add annotation:
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
-        mapView.addAnnotation(annotation)
+            let location = gestureReconizer.location(in: mapView)
+            let coordinate = mapView.convert(location,toCoordinateFrom: mapView)
+            
+            // Add annotation:
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            mapView.addAnnotation(annotation)
+        }
     }
     
 }

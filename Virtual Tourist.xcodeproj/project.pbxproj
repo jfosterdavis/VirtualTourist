@@ -18,6 +18,7 @@
 		F67A766F1D9D7A7700C7AF73 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F67A766E1D9D7A7700C7AF73 /* README.md */; };
 		F67A76711D9D7AED00C7AF73 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F67A76701D9D7AED00C7AF73 /* LICENSE */; };
 		F67A76731D9D871B00C7AF73 /* TourMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A76721D9D871B00C7AF73 /* TourMapViewController.swift */; };
+		F67A76761D9D931B00C7AF73 /* VTLongPressGR.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A76751D9D931B00C7AF73 /* VTLongPressGR.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		F67A766E1D9D7A7700C7AF73 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F67A76701D9D7AED00C7AF73 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		F67A76721D9D871B00C7AF73 /* TourMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourMapViewController.swift; sourceTree = "<group>"; };
+		F67A76751D9D931B00C7AF73 /* VTLongPressGR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VTLongPressGR.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				F67A76371D9D78A200C7AF73 /* AppDelegate.swift */,
-				F67A76691D9D78DB00C7AF73 /* Controller */,
 				F67A76681D9D78CE00C7AF73 /* Model */,
+				F67A76781D9D933400C7AF73 /* View */,
+				F67A76691D9D78DB00C7AF73 /* Controller */,
 				F67A766B1D9D799800C7AF73 /* Supporting */,
 			);
 			path = "Virtual Tourist";
@@ -167,6 +170,22 @@
 				F67A76701D9D7AED00C7AF73 /* LICENSE */,
 			);
 			name = Supporting;
+			sourceTree = "<group>";
+		};
+		F67A76771D9D932000C7AF73 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F67A76751D9D931B00C7AF73 /* VTLongPressGR.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		F67A76781D9D933400C7AF73 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F67A76771D9D932000C7AF73 /* UI */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +331,7 @@
 				F67A76401D9D78A200C7AF73 /* Virtual_Tourist.xcdatamodeld in Sources */,
 				F67A766F1D9D7A7700C7AF73 /* README.md in Sources */,
 				F67A76381D9D78A200C7AF73 /* AppDelegate.swift in Sources */,
+				F67A76761D9D931B00C7AF73 /* VTLongPressGR.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
