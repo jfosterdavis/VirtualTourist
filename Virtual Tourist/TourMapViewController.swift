@@ -36,7 +36,7 @@ class TourMapViewController: UIViewController, MKMapViewDelegate, UIGestureRecog
         //add tap recognition
         //adapted from http://stackoverflow.com/questions/34431459/ios-swift-how-to-add-pinpoint-to-map-on-touch-and-get-detailed-address-of-th
         // http://stackoverflow.com/questions/30858360/adding-a-pin-annotation-to-a-map-view-on-a-long-press-in-swift
-        let gestureRecognizer = VTLongPressGR(target: self, action: #selector(handleTap(gestureReconizer:)))
+        let gestureRecognizer = VTLongPressGR(target: self, action: #selector(handleTap(gestureRecognizer:)))
         gestureRecognizer.delegate = self
         mapView.addGestureRecognizer(gestureRecognizer)
     }
@@ -83,9 +83,9 @@ class TourMapViewController: UIViewController, MKMapViewDelegate, UIGestureRecog
         if control == view.rightCalloutAccessoryView {
             //TODO: segue to collection
            
-            
         }
     }
+    
     
     /******************************************************/
     /******************* GestureHandlerDelegate **************/
@@ -93,19 +93,27 @@ class TourMapViewController: UIViewController, MKMapViewDelegate, UIGestureRecog
     //MARK: - GestureHandlerDelegate
     
     //adapted from http://stackoverflow.com/questions/34431459/ios-swift-how-to-add-pinpoint-to-map-on-touch-and-get-detailed-address-of-th
-    func handleTap(gestureReconizer: VTLongPressGR) {
+    func handleTap(gestureRecognizer: VTLongPressGR) {
         
         //only handle the start of this event to avoid tons of pins being dropped
         //http://stackoverflow.com/questions/3319591/uilongpressgesturerecognizer-gets-called-twice-when-pressing-down
-        if (gestureReconizer.state == UIGestureRecognizerState.began){
+        if (gestureRecognizer.state == UIGestureRecognizerState.began){
         
-            let location = gestureReconizer.location(in: mapView)
+            let location = gestureRecognizer.location(in: mapView)
             let coordinate = mapView.convert(location,toCoordinateFrom: mapView)
             
             // Add annotation:
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
+            annotation.title = "test"
+            //TODO: Download geocode
+            
+            //TODO: Set title and subtitle
+            
+            //TODO: Store the pin to the model
+            
             mapView.addAnnotation(annotation)
+            mapView.selectAnnotation(annotation, animated: true)
         }
     }
     

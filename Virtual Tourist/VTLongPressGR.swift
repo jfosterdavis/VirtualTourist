@@ -14,7 +14,7 @@ class VTLongPressGR: UILongPressGestureRecognizer {
     override init(target: Any?, action: Selector?) {
         super.init(target: target, action: action)
         
-        self.minimumPressDuration = 1.5
+        self.minimumPressDuration = 1.0
         self.allowableMovement = 0.5
         
     }
