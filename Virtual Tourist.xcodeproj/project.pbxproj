@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F67A76381D9D78A200C7AF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A76371D9D78A200C7AF73 /* AppDelegate.swift */; };
-		F67A763A1D9D78A200C7AF73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A76391D9D78A200C7AF73 /* ViewController.swift */; };
 		F67A763D1D9D78A200C7AF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67A763B1D9D78A200C7AF73 /* Main.storyboard */; };
 		F67A76401D9D78A200C7AF73 /* Virtual_Tourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F67A763E1D9D78A200C7AF73 /* Virtual_Tourist.xcdatamodeld */; };
 		F67A76421D9D78A200C7AF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F67A76411D9D78A200C7AF73 /* Assets.xcassets */; };
@@ -18,6 +17,7 @@
 		F67A766D1D9D79CC00C7AF73 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F67A766C1D9D79CC00C7AF73 /* .gitignore */; };
 		F67A766F1D9D7A7700C7AF73 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F67A766E1D9D7A7700C7AF73 /* README.md */; };
 		F67A76711D9D7AED00C7AF73 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F67A76701D9D7AED00C7AF73 /* LICENSE */; };
+		F67A76731D9D871B00C7AF73 /* TourMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A76721D9D871B00C7AF73 /* TourMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,6 @@
 /* Begin PBXFileReference section */
 		F67A76341D9D78A200C7AF73 /* Virtual Tourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F67A76371D9D78A200C7AF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F67A76391D9D78A200C7AF73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F67A763C1D9D78A200C7AF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F67A763F1D9D78A200C7AF73 /* Virtual_Tourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Virtual_Tourist.xcdatamodel; sourceTree = "<group>"; };
 		F67A76411D9D78A200C7AF73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		F67A766C1D9D79CC00C7AF73 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		F67A766E1D9D7A7700C7AF73 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F67A76701D9D7AED00C7AF73 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		F67A76721D9D871B00C7AF73 /* TourMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +142,7 @@
 		F67A76691D9D78DB00C7AF73 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F67A76391D9D78A200C7AF73 /* ViewController.swift */,
+				F67A76721D9D871B00C7AF73 /* TourMapViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -308,7 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F67A763A1D9D78A200C7AF73 /* ViewController.swift in Sources */,
+				F67A76731D9D871B00C7AF73 /* TourMapViewController.swift in Sources */,
 				F67A76401D9D78A200C7AF73 /* Virtual_Tourist.xcdatamodeld in Sources */,
 				F67A766F1D9D7A7700C7AF73 /* README.md in Sources */,
 				F67A76381D9D78A200C7AF73 /* AppDelegate.swift in Sources */,

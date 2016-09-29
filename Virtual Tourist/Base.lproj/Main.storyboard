@@ -9,7 +9,7 @@
         <!--Virtual Tourist-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Virtual Tourist" id="BYZ-38-t0r" customClass="ViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Virtual Tourist" id="BYZ-38-t0r" customClass="TourMapViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,20 +17,32 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6Iq-lQ-APU"/>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6Iq-lQ-APU" secondAttribute="bottom" id="F9d-sC-wNd"/>
+                            <constraint firstAttribute="trailing" secondItem="6Iq-lQ-APU" secondAttribute="trailing" id="FGx-dq-qUJ"/>
+                            <constraint firstItem="6Iq-lQ-APU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UsC-0Q-VNb"/>
+                            <constraint firstItem="6Iq-lQ-APU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xQN-yW-Xoh"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tours" id="b1F-LJ-KQ8">
-                        <barButtonItem key="leftBarButtonItem" title="Options" style="plain" id="KUk-iH-uJ1"/>
+                        <barButtonItem key="leftBarButtonItem" title="Options" id="KUk-iH-uJ1"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xaX-4M-agm">
                             <connections>
                                 <segue destination="3H8-mY-ZXt" kind="show" id="00E-04-vP5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="6Iq-lQ-APU" id="Ean-1Q-Odd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="807" y="196"/>
+            <point key="canvasLocation" x="805.60000000000002" y="195.6521739130435"/>
         </scene>
         <!--Photo Tour-->
         <scene sceneID="68q-h1-tbD">
