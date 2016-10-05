@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,21 +57,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bOs-Es-BG1">
+                            <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOs-Es-BG1">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="190" id="uwd-o1-DdF"/>
                                 </constraints>
                             </mapView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Aba-DK-xwi">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jw4-0P-hfN">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zjD-Ej-sSY">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAc-kP-3Ke">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="drV-lg-fpN"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bOs-Es-BG1" firstAttribute="leading" secondItem="QYj-ta-uwR" secondAttribute="leading" id="1I2-3g-ZhA"/>
                             <constraint firstAttribute="trailing" secondItem="bOs-Es-BG1" secondAttribute="trailing" id="560-Zd-Wbj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SAc-kP-3Ke" secondAttribute="trailing" constant="149" id="C0o-T9-xHc"/>
+                            <constraint firstItem="SAc-kP-3Ke" firstAttribute="top" secondItem="Aba-DK-xwi" secondAttribute="bottom" constant="20" id="UlN-mw-qqU"/>
+                            <constraint firstItem="SAc-kP-3Ke" firstAttribute="leading" secondItem="QYj-ta-uwR" secondAttribute="leadingMargin" constant="148" id="Ymo-ij-ILn"/>
                             <constraint firstItem="bOs-Es-BG1" firstAttribute="top" secondItem="QYj-ta-uwR" secondAttribute="top" id="c6c-1U-Tfk"/>
+                            <constraint firstItem="Aba-DK-xwi" firstAttribute="top" secondItem="bOs-Es-BG1" secondAttribute="bottom" constant="5" id="eIf-Hb-iAr"/>
+                            <constraint firstItem="Aba-DK-xwi" firstAttribute="trailing" secondItem="QYj-ta-uwR" secondAttribute="trailingMargin" id="ejS-Hc-Lw6"/>
+                            <constraint firstItem="Aba-DK-xwi" firstAttribute="leading" secondItem="QYj-ta-uwR" secondAttribute="leadingMargin" id="qCZ-mq-vtO"/>
+                            <constraint firstItem="Egy-BS-dLu" firstAttribute="top" secondItem="SAc-kP-3Ke" secondAttribute="bottom" constant="8" id="qc8-dQ-oI5"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="Aba-DK-xwi" id="b2p-zS-miR"/>
                         <outlet property="mapView" destination="bOs-Es-BG1" id="Cvv-Fx-SMp"/>
+                        <outlet property="newCollectionButton" destination="SAc-kP-3Ke" id="Mut-2l-HUQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RPo-bq-hhe" userLabel="First Responder" sceneMemberID="firstResponder"/>

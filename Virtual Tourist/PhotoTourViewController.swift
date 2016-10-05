@@ -13,6 +13,9 @@ import MapKit
 class PhotoTourViewController: UIViewController,  MKMapViewDelegate{
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var newCollectionButton: UIButton!
+
     var pin: Pin?
     
     /******************************************************/
