@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 import MapKit
+import CoreData
 
-class TourMapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognizerDelegate {
+class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDelegate {
     
     
     /******************************************************/
@@ -19,6 +20,8 @@ class TourMapViewController: UIViewController, MKMapViewDelegate, UIGestureRecog
     //MARK: - Properties
     
     @IBOutlet weak var mapView: MKMapView!
+    
+    var models = [Pin]() //the model is an array of pins
     
     
     /******************************************************/
@@ -33,12 +36,24 @@ class TourMapViewController: UIViewController, MKMapViewDelegate, UIGestureRecog
         //set delegates
         mapView.delegate = self
         
+        //link the CoreDataMapViewController with the IBOutlet
+        coreMapView = mapView
+        
         //add tap recognition
         //adapted from http://stackoverflow.com/questions/34431459/ios-swift-how-to-add-pinpoint-to-map-on-touch-and-get-detailed-address-of-th
         // http://stackoverflow.com/questions/30858360/adding-a-pin-annotation-to-a-map-view-on-a-long-press-in-swift
         let gestureRecognizer = VTLongPressGR(target: self, action: #selector(handleTap(gestureRecognizer:)))
         gestureRecognizer.delegate = self
         mapView.addGestureRecognizer(gestureRecognizer)
+        
+        setupFetchedResultsController()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        syncViewWithModel()
+        dataCheck()
     }
     
     /******************************************************/
@@ -86,6 +101,42 @@ class TourMapViewController: UIViewController, MKMapViewDelegate, UIGestureRecog
         }
     }
     
+    /******************************************************/
+    /******************* Model Operations **************/
+    /******************************************************/
+    //MARK: - Model Operations
+    
+    func syncViewWithModel() {
+        
+        
+        
+    }
+    
+    func setupFetchedResultsController(){
+        
+        //set up stack and fetchrequest
+        // Get the stack
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        let stack = delegate.stack
+        
+        // Create a fetchrequest
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
+        fr.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false),NSSortDescriptor(key: "title", ascending: true)]
+        
+        // So far we have a search that will match ALL Pins.
+        
+        // Create the FetchedResultsController
+        let fc = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        self.fetchedResultsController = fc
+        
+    }
+    
+    func dataCheck(){
+        let Pins = fetchedResultsController!.fetchedObjects
+        print("There are \(Pins!.count) Pins in the data model")
+    }
+    
     
     /******************************************************/
     /******************* GestureHandlerDelegate **************/
@@ -103,17 +154,19 @@ class TourMapViewController: UIViewController, MKMapViewDelegate, UIGestureRecog
             let coordinate = mapView.convert(location,toCoordinateFrom: mapView)
             
             // Add annotation:
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = "test"
+            //let annotation = MKPointAnnotation()
+            //annotation.coordinate = coordinate
+            //annotation.title = "test"
             //TODO: Download geocode
             
             //TODO: Set title and subtitle
             
             //TODO: Store the pin to the model
+            let newPin = Pin(title: "Untitled", latitude: coordinate.latitude, longitude: coordinate.longitude, subtitle: nil, context: fetchedResultsController!.managedObjectContext)
+            print("Just created a new Pin: \(newPin)")
             
-            mapView.addAnnotation(annotation)
-            mapView.selectAnnotation(annotation, animated: true)
+            mapView.addAnnotation(newPin)
+            mapView.selectAnnotation(newPin, animated: true)
         }
     }
     
