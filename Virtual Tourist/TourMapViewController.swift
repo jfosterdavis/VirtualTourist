@@ -33,7 +33,6 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         //set delegates
         mapView.delegate = self
         
@@ -66,7 +65,7 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
     /******************************************************/
     //MARK: - Map Delegate
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseId = "pin"
         
@@ -102,6 +101,8 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             //TODO: segue to collection
+            let photoTour = storyboard?.instantiateViewController(withIdentifier: "PhotoTourViewController") as! PhotoTourViewController
+            self.navigationController?.pushViewController(photoTour, animated: true)
            
         }
     }
@@ -112,8 +113,6 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
     //MARK: - Model Operations
     
     func syncViewWithModel() {
-        
-        
         
     }
     
@@ -178,8 +177,8 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
             let newPin = Pin(title: "Untitled", latitude: coordinate.latitude, longitude: coordinate.longitude, subtitle: nil, context: fetchedResultsController!.managedObjectContext)
             print("Just created a new Pin: \(newPin)")
             
-//            mapView.addAnnotation(newPin)
-            //mapView.selectAnnotation(newPin, animated: true)
+            mapView.addAnnotation(newPin)
+            mapView.selectAnnotation(newPin, animated: true)
         }
     }
     

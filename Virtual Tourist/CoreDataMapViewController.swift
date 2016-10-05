@@ -86,7 +86,9 @@ extension CoreDataMapViewController: NSFetchedResultsControllerDelegate {
         
             switch(type) {
             case .insert:
-                coreMapView.addAnnotation(thePin)
+                //this will be done in the view controller so it can be selected
+                //coreMapView.addAnnotation(thePin)
+                
                 print("case insert")
             case .delete:
                 coreMapView.removeAnnotation(thePin)

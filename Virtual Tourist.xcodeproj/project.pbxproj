@@ -23,6 +23,7 @@
 		F67A767D1D9E8CAC00C7AF73 /* Pin+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A767B1D9E8CAC00C7AF73 /* Pin+CoreDataClass.swift */; };
 		F67A767E1D9E8CAC00C7AF73 /* Pin+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A767C1D9E8CAC00C7AF73 /* Pin+CoreDataProperties.swift */; };
 		F67A76801D9E8E8E00C7AF73 /* CoreDataMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A767F1D9E8E8E00C7AF73 /* CoreDataMapViewController.swift */; };
+		F67A76821DA585A900C7AF73 /* PhotoTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A76811DA585A900C7AF73 /* PhotoTourViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		F67A767B1D9E8CAC00C7AF73 /* Pin+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pin+CoreDataClass.swift"; path = "../Pin+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F67A767C1D9E8CAC00C7AF73 /* Pin+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pin+CoreDataProperties.swift"; path = "../Pin+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F67A767F1D9E8E8E00C7AF73 /* CoreDataMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataMapViewController.swift; sourceTree = "<group>"; };
+		F67A76811DA585A900C7AF73 /* PhotoTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTourViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			children = (
 				F67A767F1D9E8E8E00C7AF73 /* CoreDataMapViewController.swift */,
 				F67A76721D9D871B00C7AF73 /* TourMapViewController.swift */,
+				F67A76811DA585A900C7AF73 /* PhotoTourViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				F67A76801D9E8E8E00C7AF73 /* CoreDataMapViewController.swift in Sources */,
 				F67A766F1D9D7A7700C7AF73 /* README.md in Sources */,
 				F67A767A1D9DA11600C7AF73 /* CoreDataStack.swift in Sources */,
+				F67A76821DA585A900C7AF73 /* PhotoTourViewController.swift in Sources */,
 				F67A76381D9D78A200C7AF73 /* AppDelegate.swift in Sources */,
 				F67A76761D9D931B00C7AF73 /* VTLongPressGR.swift in Sources */,
 			);
