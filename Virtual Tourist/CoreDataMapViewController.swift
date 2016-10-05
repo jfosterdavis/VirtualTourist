@@ -29,6 +29,16 @@ class CoreDataMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     var coreMapView: MKMapView!
+    
+    /******************************************************/
+    /******************* Life Cycle **************/
+    /******************************************************/
+    //MARK: - Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
        
 }
 

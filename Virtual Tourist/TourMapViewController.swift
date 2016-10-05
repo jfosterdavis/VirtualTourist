@@ -22,6 +22,7 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
     @IBOutlet weak var mapView: MKMapView!
     
     var models = [Pin]() //the model is an array of pins
+    var appDelegate: AppDelegate!
     
     
     /******************************************************/
@@ -48,6 +49,10 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
         
         setupFetchedResultsController()
         
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        plotInitialPins()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +76,7 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
             
-            pinView!.pinTintColor = UIColor.red
+            pinView!.pinTintColor = UIColor.blue
             pinView!.animatesDrop = true
             
             pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
@@ -137,6 +142,14 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
         print("There are \(Pins!.count) Pins in the data model")
     }
     
+    func fetchModelPins() -> [Pin] {
+        return fetchedResultsController!.fetchedObjects as! [Pin]
+    }
+    
+    func plotInitialPins() {
+        mapView.addAnnotations(fetchModelPins())
+    }
+    
     
     /******************************************************/
     /******************* GestureHandlerDelegate **************/
@@ -154,9 +167,9 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
             let coordinate = mapView.convert(location,toCoordinateFrom: mapView)
             
             // Add annotation:
-            //let annotation = MKPointAnnotation()
-            //annotation.coordinate = coordinate
-            //annotation.title = "test"
+//            let newPin = MKPointAnnotation()
+//            newPin.coordinate = coordinate
+//            newPin.title = "test"
             //TODO: Download geocode
             
             //TODO: Set title and subtitle
@@ -165,8 +178,8 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
             let newPin = Pin(title: "Untitled", latitude: coordinate.latitude, longitude: coordinate.longitude, subtitle: nil, context: fetchedResultsController!.managedObjectContext)
             print("Just created a new Pin: \(newPin)")
             
-            mapView.addAnnotation(newPin)
-            mapView.selectAnnotation(newPin, animated: true)
+//            mapView.addAnnotation(newPin)
+            //mapView.selectAnnotation(newPin, animated: true)
         }
     }
     
