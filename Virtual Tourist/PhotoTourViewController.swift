@@ -8,7 +8,30 @@
 
 import Foundation
 import UIKit
+import MapKit
 
-class PhotoTourViewController: UIViewController {
+class PhotoTourViewController: UIViewController,  MKMapViewDelegate{
     
+    @IBOutlet weak var mapView: MKMapView!
+    var pin: Pin?
+    
+    /******************************************************/
+    /******************* Life Cycle **************/
+    /******************************************************/
+    //MARK: - Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //set delegates
+        mapView.delegate = self
+        
+        plotPin()
+    }
+    
+    func plotPin(){
+        if let pin = pin {
+            mapView.addAnnotation(pin)
+        }
+    }
 }

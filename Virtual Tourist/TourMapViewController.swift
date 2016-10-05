@@ -102,6 +102,8 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
         if control == view.rightCalloutAccessoryView {
             //TODO: segue to collection
             let photoTour = storyboard?.instantiateViewController(withIdentifier: "PhotoTourViewController") as! PhotoTourViewController
+            let pin = view.annotation as! Pin
+            photoTour.pin = pin
             self.navigationController?.pushViewController(photoTour, animated: true)
            
         }
