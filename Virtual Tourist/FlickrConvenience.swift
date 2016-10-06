@@ -23,7 +23,8 @@ extension FlickrClient {
             FlickrClient.Constants.ParameterKeys.NoJSONCallback: FlickrClient.Constants.ParameterValues.DisableJSONCallback,
             FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.RadiusUnits: "mi",
             FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.PerPage: 20,
-            FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.Page: 1
+            FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.Page: 1,
+            FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.Media: "photos"
         ]
         //add passed parameters to parameters dictionary
         //latitude

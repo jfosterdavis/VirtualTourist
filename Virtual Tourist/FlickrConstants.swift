@@ -48,6 +48,7 @@ extension FlickrClient {
                 static let RadiusUnits = "radius_units"
                 static let PerPage = "per_page"
                 static let Page = "page"
+                static let Media = "media"
             }
         }
         
