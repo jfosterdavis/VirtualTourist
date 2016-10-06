@@ -29,9 +29,26 @@ class PhotoTourViewController: UIViewController,  MKMapViewDelegate{
         //set delegates
         mapView.delegate = self
         
-        plotPin()
+        plotAndZoomPin()
         
-        flickrTest()
+        //flickrTest()
+    }
+    
+    
+    /******************************************************/
+    /******************* Map Functions **************/
+    /******************************************************/
+    //MARK: - Map Functions
+    
+    
+    func plotAndZoomPin(){
+        if let pin = pin {
+            plotPin()
+            
+            //from http://stackoverflow.com/questions/27157634/zoom-to-fit-current-location-and-annotation-on-map
+            mapView.showAnnotations([pin], animated: true)
+            
+        }
     }
     
     func plotPin(){
@@ -39,6 +56,39 @@ class PhotoTourViewController: UIViewController,  MKMapViewDelegate{
             mapView.addAnnotation(pin)
         }
     }
+    
+    /******************************************************/
+    /******************* Map Delegate **************/
+    /******************************************************/
+    //MARK: - Map Delegate
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = false
+            
+            pinView!.pinTintColor = UIColor.red
+            pinView!.animatesDrop = true
+            
+            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
+    }
+    
+    
+    /******************************************************/
+    /******************* testing **************/
+    /******************************************************/
+    //MARK: - testing
     
     func flickrTest() {
         

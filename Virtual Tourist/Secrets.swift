@@ -9,6 +9,6 @@
 import Foundation
 
 struct Secrets {
-    static let FlickrAPIKey = ""
+    static let FlickrAPIKey = "a3e57cb8be9dafaf23798d96d1d4ebf5"
     static let FlickrRESTAPIKey = ""
 }
