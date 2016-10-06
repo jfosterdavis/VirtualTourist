@@ -32,6 +32,25 @@ class PhotoTourViewController: UIViewController,  MKMapViewDelegate{
         plotAndZoomPin()
         
         //flickrTest()
+        
+        flickrGetPhotosNearPin()
+    }
+    
+    /******************************************************/
+    /******************* Flickr API **************/
+    /******************************************************/
+    //MARK: - Flickr API
+    
+    func flickrGetPhotosNearPin(){
+        if let pin = pin {
+            FlickrClient.sharedInstance.getFlickrSearchNearLatLong(pin.latitude, long: pin.longitude) { (results, error) in
+                if results != nil {
+                    print("Successful getFlickrSearchNearLatLong.  Results: \(results)")
+                } else {
+                    print("Error with getFlickrSearchNearLatLong.  Error: \(error)")
+                }
+            }
+        }
     }
     
     

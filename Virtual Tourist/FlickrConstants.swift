@@ -34,6 +34,23 @@ extension FlickrClient {
             
         }
         
+        struct MethodArgumentKeys {
+            struct PhotosSearch {
+                static let Sort = "sort"
+                static let Accuracy = "accuracy"
+                static let SafeSearch = "safe_search"
+                static let ContentType = "content_type"
+                static let HasGeo = "has_geo"
+                static let GeoContext = "geo_context"
+                static let Latitude = "lat"
+                static let Longitude = "lon"
+                static let Radius = "radius"
+                static let RadiusUnits = "radius_units"
+                static let PerPage = "per_page"
+                static let Page = "page"
+            }
+        }
+        
         
         // MARK: Parameter Keys
         struct ParameterKeys {

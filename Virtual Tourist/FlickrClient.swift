@@ -35,7 +35,7 @@ class FlickrClient : NSObject {
     
     // MARK: GET
     
-    func taskForGETMethod(parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForGETMethod(parameters: [String:Any], completionHandlerForGET: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         /* 1. Set the parameters */
         var passTheseParameters = parameters
@@ -121,7 +121,7 @@ class FlickrClient : NSObject {
     }
     
     // create a URL from parameters
-    fileprivate func FlickrURLFromParameters(_ parameters: [String:AnyObject]?, withPathExtension: String? = nil) -> URL {
+    fileprivate func FlickrURLFromParameters(_ parameters: [String:Any]?, withPathExtension: String? = nil) -> URL {
         
         var components = URLComponents()
         components.scheme = Constants.ApiScheme
