@@ -21,7 +21,9 @@ extension FlickrClient {
             FlickrClient.Constants.ParameterKeys.Method: FlickrClient.Constants.Methods.SearchPhotos,
             FlickrClient.Constants.ParameterKeys.Format: FlickrClient.Constants.ParameterValues.ResponseFormat,
             FlickrClient.Constants.ParameterKeys.NoJSONCallback: FlickrClient.Constants.ParameterValues.DisableJSONCallback,
-            FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.RadiusUnits: "mi"
+            FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.RadiusUnits: "mi",
+            FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.PerPage: 20,
+            FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.Page: 1
         ]
         //add passed parameters to parameters dictionary
         //latitude
@@ -44,7 +46,7 @@ extension FlickrClient {
             } else {
                 //json should have returned a A dictionary with a key of "results" that contains an array of dictionaries
                 
-                if let resultsArray = results?[FlickrClient.Constants.ResponseKeys.Photos] as? NSArray { //dig into the JSON response dictionary to get the array at key "photos"
+                if let resultsArray = results?[FlickrClient.Constants.ResponseKeys.Photos] as? [String:Any] { //dig into the JSON response dictionary to get the array at key "photos"
                     
                     print("Unwrapped JSON response from getFlickrSearchNearLatLong:")
                     print (resultsArray)
