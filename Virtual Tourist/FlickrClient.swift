@@ -35,23 +35,22 @@ class FlickrClient : NSObject {
     
     // MARK: GET
     
-    func taskForGETMethod(_ method: String, parameters: [String:AnyObject]?, completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForGETMethod(parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
         /* 1. Set the parameters */
-        var passTheseParameters :[String:AnyObject]?
-        if let parameters = parameters {
-            passTheseParameters = parameters
-        } else {
-            passTheseParameters = nil
-        }
+        var passTheseParameters = parameters
+        //add the APIKey
+        passTheseParameters[Constants.ParameterKeys.API_key] = Constants.ApiKey as AnyObject?
+        //add the URL extra
+        passTheseParameters[Constants.ParameterKeys.Extras] = Constants.ParameterValues.MediumURL as AnyObject?
         
         // No API key passed in this m
         //parametersWithApiKey[ParameterKeys.ApiKey] = Constants.ApiKey
         
         /* 2/3. Build the URL, Configure the request */
-        let request = NSMutableURLRequest(url: ParseURLFromParameters(passTheseParameters, withPathExtension: method))
-        request.addValue(Secrets.FlickrAPIKey, forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue(Secrets.FlickrRESTAPIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
+        let request = NSMutableURLRequest(url: FlickrURLFromParameters(passTheseParameters, withPathExtension: nil))
+//        request.addValue(Secrets.FlickrAPIKey, forHTTPHeaderField: "X-Parse-Application-Id")
+//        request.addValue(Secrets.FlickrRESTAPIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         
         /* 4. Make the request */
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
@@ -94,63 +93,6 @@ class FlickrClient : NSObject {
         return task
     }
     
-    // MARK: POST
-    
-    func taskForPOSTMethod(_ method: String, parameters: [String:AnyObject]?, jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
-        
-        /* 1. Set the parameters */
-        var parametersWithApiKey = parameters
-        // No API key passed in this client
-        //parametersWithApiKey[ParameterKeys.ApiKey] = Constants.ApiKey
-        
-        /* 2/3. Build the URL, Configure the request */
-        let request = NSMutableURLRequest(url: ParseURLFromParameters(parametersWithApiKey, withPathExtension: method))
-        request.httpMethod = "POST"
-        request.addValue(Constants.ApiKey, forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue(Constants.RESTApiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonBody.data(using: String.Encoding.utf8)
-        print("About to make a request with the following HTTPBody: \(request.httpBody)")
-        /* 4. Make the request */
-        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
-            
-            func sendError(_ error: String, code: Int) {
-                print(error)
-                let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandlerForPOST(nil, NSError(domain: "taskForPOSTMethod", code: code, userInfo: userInfo))
-            }
-            
-            /* GUARD: Was there an error? */
-            guard (error == nil) else {
-                sendError(error!.localizedDescription, code: 1)
-                return
-            }
-            
-            /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode , statusCode >= 200 && statusCode <= 299 else {
-                switch (response as? HTTPURLResponse)!.statusCode {
-                default:
-                    sendError("Your request returned a status code other than 2xx! Status code \((response as? HTTPURLResponse)!.statusCode).", code: 2)
-                }
-                
-                return
-            }
-            
-            /* GUARD: Was there any data returned? */
-            guard let data = data else {
-                sendError("No data was returned by the request!", code: 3)
-                return
-            }
-            
-            /* 5/6. Parse the data and use the data (happens in completion handler) */
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
-        }
-        
-        /* 7. Start the request */
-        task.resume()
-        
-        return task
-    }
     
     // MARK: Helpers
     
@@ -179,7 +121,7 @@ class FlickrClient : NSObject {
     }
     
     // create a URL from parameters
-    fileprivate func ParseURLFromParameters(_ parameters: [String:AnyObject]?, withPathExtension: String? = nil) -> URL {
+    fileprivate func FlickrURLFromParameters(_ parameters: [String:AnyObject]?, withPathExtension: String? = nil) -> URL {
         
         var components = URLComponents()
         components.scheme = Constants.ApiScheme

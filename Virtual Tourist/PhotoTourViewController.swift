@@ -30,11 +30,29 @@ class PhotoTourViewController: UIViewController,  MKMapViewDelegate{
         mapView.delegate = self
         
         plotPin()
+        
+        flickrTest()
     }
     
     func plotPin(){
         if let pin = pin {
             mapView.addAnnotation(pin)
+        }
+    }
+    
+    func flickrTest() {
+        
+        let parameters = [
+            FlickrClient.Constants.ParameterKeys.Method: FlickrClient.Constants.Methods.SearchPhotos,
+            FlickrClient.Constants.ParameterKeys.Format: FlickrClient.Constants.ParameterValues.ResponseFormat,
+            FlickrClient.Constants.ParameterKeys.NoJSONCallback: FlickrClient.Constants.ParameterValues.DisableJSONCallback
+        ]
+        FlickrClient.sharedInstance.taskForGETMethod(parameters: parameters as [String : AnyObject]) { (result, error) in
+            if result != nil {
+                print("Successful Flickr Test.  Results: \(result)")
+            } else {
+                print("Error with Flickr Test.  Error: \(error)")
+            }
         }
     }
 }
