@@ -14,7 +14,18 @@ import Foundation
 
 extension FlickrClient {
     
-    func getFlickrSearchNearLatLong(_ lat: Double, long: Double, radius: Double = 5.0, completionHandlerForGetFlickrSearchNearLatLong: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) {
+    /**
+     Connects to Flickr and downloads urls for photos near the given lat and long
+     
+     - Parameters:
+        - lat: Latitude of desired photos
+        - long: Longitude of desired photos
+        - radius: number of miles from Lat/Long to search
+     
+     
+     - Returns: An array of photos (as dictionaries)
+     */
+    func getFlickrSearchNearLatLong(_ lat: Double, long: Double, radius: Double = 5.0, completionHandlerForGetFlickrSearchNearLatLong: @escaping (_ results: Any?, _ error: NSError?) -> Void) {
         
         /* 1. Specify parameters, method (if has {key}), and HTTP body (if POST) */
         var parameters: [String:Any] = [
@@ -22,9 +33,10 @@ extension FlickrClient {
             FlickrClient.Constants.ParameterKeys.Format: FlickrClient.Constants.ParameterValues.ResponseFormat,
             FlickrClient.Constants.ParameterKeys.NoJSONCallback: FlickrClient.Constants.ParameterValues.DisableJSONCallback,
             FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.RadiusUnits: "mi",
-            FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.PerPage: 20,
+            FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.PerPage: 100,
             FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.Page: 1,
-            FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.Media: "photos"
+            FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.Media: "photos",
+            FlickrClient.Constants.MethodArgumentKeys.PhotosSearch.SafeSearch: 1
         ]
         //add passed parameters to parameters dictionary
         //latitude
@@ -47,47 +59,28 @@ extension FlickrClient {
             } else {
                 //json should have returned a A dictionary with a key of "results" that contains an array of dictionaries
                 
-                if let resultsArray = results?[FlickrClient.Constants.ResponseKeys.Photos] as? [String:Any] { //dig into the JSON response dictionary to get the array at key "photos"
+                if let resultsArray = results?[FlickrClient.Constants.ResponseKeys.Photos] as? [String:AnyObject] { //dig into the JSON response dictionary to get the array at key "photos"
                     
                     print("Unwrapped JSON response from getFlickrSearchNearLatLong:")
                     print (resultsArray)
-//                    for locationDictionary in resultsArray { //step through each member of the "results" array
-//                        if let locationDictionary = locationDictionary as? [String:AnyObject] { //ensure eacy dictionary matches the correct type
-//                            
-//                            //this is the beginning of a new try
-//                            tryCount += 1
-//                            
-//                            if let newStudentInformationStruct = StudentInformation(fromDataSet: locationDictionary){ //attempt to initialize a new StudentInformationStruct from the dictionary
-//                                
-//                                //We have a new StudentInformation struct, so save it to the shared model
-//                                StudentInformationsModel.sharedInstance.StudentInformations.append(newStudentInformationStruct)
-//                                
-//                                //sort the model.
-//                                //adapted from https://www.hackingwithswift.com/example-code/arrays/how-to-sort-an-array-using-sort
-//                                StudentInformationsModel.sharedInstance.StudentInformations.sort {
-//                                    $0.createdAt! > $1.createdAt!
-//                                }
-//                                
-//                                //this attempt was a success
-//                                successCount += 1
-//                            } else { //if the attempt to init a new StudentInformation struct returns nil, it was not successful
-//                                print("\nDATA ERROR: Failed to initialize a new StudentInformation Struct")
-//                                
-//                                //this attempt was a failure
-//                                failCount += 1
-//                            }
-//                            //print("\nHere is one new item from the array of objects:")
-//                            //print(locationDictionary)
-//                        } else {
-//                            print("DATA ERROR: Array within the \"results\" dictionary does not match type [String:AnyObject]")
-//                        }
-//                        
-//                    }
-//                    print("\nThere are " + String(self.StudentInformations.count) + " Information Records stored.  getStudentLocations data pull Complete.")
-                    completionHandlerForGetFlickrSearchNearLatLong(results, nil)
+                    
+                    if let photoArray = resultsArray[FlickrClient.Constants.ResponseKeys.Photo] as? [[String:Any]]
+                    {
+                        print("Array of Photos from getFlickrSearchNearLatLong:")
+                        print(photoArray)
+//                        //try to put these results into a FlickrPhotoResults struct
+                        let flickrResultsObject = FlickrPhotoResults(fromJSONArrayOfPhotoDictionaries: photoArray)
+                        completionHandlerForGetFlickrSearchNearLatLong(flickrResultsObject, nil)
+                    
+                        
+                    } else {
+                        print("\nDATA ERROR: Could not find \(FlickrClient.Constants.ResponseKeys.Photo) in \(resultsArray)")
+                        completionHandlerForGetFlickrSearchNearLatLong(nil, NSError(domain: "getFlickrSearchNearLatLong parsing", code: 4, userInfo: [NSLocalizedDescriptionKey: "DATA ERROR: Failed to interpret data returned from Flickr server (getFlickrSearchNearLatLong)."]))
+                    }
+                    
                 } else {
                     print("\nDATA ERROR: Could not find \(FlickrClient.Constants.ResponseKeys.Photos) in \(results)")
-                    completionHandlerForGetFlickrSearchNearLatLong(nil, NSError(domain: "getUserData parsing", code: 4, userInfo: [NSLocalizedDescriptionKey: "DATA ERROR: Failed to interpret data returned from Flickr server (getFlickrSearchNearLatLong)."]))
+                    completionHandlerForGetFlickrSearchNearLatLong(nil, NSError(domain: "getFlickrSearchNearLatLong parsing", code: 4, userInfo: [NSLocalizedDescriptionKey: "DATA ERROR: Failed to interpret data returned from Flickr server (getFlickrSearchNearLatLong)."]))
                 }
             } // end of error check
         } // end of taskForGetMethod Closure
