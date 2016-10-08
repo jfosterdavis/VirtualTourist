@@ -21,7 +21,7 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     
     ///Number of photos to show int he collection view
     let numberPhotosToDisplay = 5
-    var photosToDisplay = [FlickrPhoto]()
+    
 
     var pin: Pin?
     
@@ -65,9 +65,9 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         //TODO: add the photo to the collection
         photosToDisplay.append(photo)
         
-        print("Adding a photo to the collection.  colleciton has \(photosToDisplay.count) members")
+        //print("Adding a photo to the collection.  colleciton has \(photosToDisplay.count) members")
         
-        self.collectionView!.reloadData()
+        //self.collectionView!.reloadData()
     }
     
     /******************************************************/

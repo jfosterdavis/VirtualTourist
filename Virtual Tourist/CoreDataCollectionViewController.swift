@@ -29,6 +29,7 @@ class CoreDataCollectionViewController: UIViewController, UICollectionViewDelega
     }
     
     var collectionView: UICollectionView!
+    var photosToDisplay = [FlickrPhoto]()
     
     /******************************************************/
     /******************* Life Cycle **************/
@@ -62,7 +63,8 @@ extension CoreDataCollectionViewController {
 extension CoreDataCollectionViewController: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        //collectionView.beginUpdates()
+        print("About to reload collection view data")
+        self.collectionView!.reloadData()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
@@ -87,7 +89,7 @@ extension CoreDataCollectionViewController: NSFetchedResultsControllerDelegate {
             switch(type) {
             case .insert:
                 //this will be done in the view controller so it can be selected
-                //coreMapView.addAnnotation(thePin)
+                photosToDisplay.append(theFlickrPhoto)
                 
                 print("case insert")
             case .delete:
@@ -100,6 +102,8 @@ extension CoreDataCollectionViewController: NSFetchedResultsControllerDelegate {
                 //TODO: move a cell... this may not be needed
                 print("case move")
             }
+            
+            
         } else
         {
             fatalError("Couldn't get a FlickrPhoto from anObject in didChange")
