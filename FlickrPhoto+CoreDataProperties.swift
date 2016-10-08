@@ -17,18 +17,18 @@ extension FlickrPhoto {
     }
 
     @NSManaged public var imageData: NSData?
-    @NSManaged public var farm: Int16
-    @NSManaged public var height: Int16
-    @NSManaged public var id: Int16
-    @NSManaged public var isFamily: Int16
-    @NSManaged public var isFriend: Int16
-    @NSManaged public var isPublic: Int16
-    @NSManaged public var owner: String?
-    @NSManaged public var secret: String?
-    @NSManaged public var server: Int16
-    @NSManaged public var title: String?
-    @NSManaged public var url: String?
-    @NSManaged public var width: Int16
+    @NSManaged public var farm: Int64
+    @NSManaged public var height: Int64
+    @NSManaged public var id: Int64
+    @NSManaged public var isFamily: Int64
+    @NSManaged public var isFriend: Int64
+    @NSManaged public var isPublic: Int64
+    @NSManaged public var owner: String
+    @NSManaged public var secret: String
+    @NSManaged public var server: Int64
+    @NSManaged public var title: String
+    @NSManaged public var url: String
+    @NSManaged public var width: Int64
     @NSManaged public var pin: Pin?
 
 }
