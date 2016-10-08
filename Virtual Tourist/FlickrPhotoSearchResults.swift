@@ -10,7 +10,7 @@ import Foundation
 
 struct FlickrPhotoResults {
     
-    var photos = [FlickrPhoto]()
+    var photos = [FlickrPhotoResult]()
     
     enum FlickrPhotoResultsError: Error {
         case badInput
@@ -20,7 +20,7 @@ struct FlickrPhotoResults {
         for photoDictionary in data {
             
             do {
-                if let newFlickrPhoto = try FlickrPhoto(fromDataSet: photoDictionary) {
+                if let newFlickrPhoto = try FlickrPhotoResult(fromDataSet: photoDictionary) {
                     photos.append(newFlickrPhoto)
                 }
             } catch {

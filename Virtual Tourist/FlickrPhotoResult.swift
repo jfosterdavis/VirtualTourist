@@ -12,7 +12,7 @@ import Foundation
  A single photo result from Flickr JSON.
  */
 
-struct FlickrPhoto {
+struct FlickrPhotoResult {
     
     /******************************************************/
     /******************* Properties **************/
