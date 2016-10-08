@@ -14,4 +14,7 @@ class CustomVirtualTouristCollectionViewCell: UICollectionViewCell {
     //Just an image
     @IBOutlet weak var imageView: UIImageView!
     
+    //label for updates
+    @IBOutlet weak var label: UILabel!
+    
 }

@@ -63,9 +63,11 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     
     func addFlickrPhotoToCollection(photo: FlickrPhoto) {
         //TODO: add the photo to the collection
-        //print("Adding a photo to the collection.  colleciton has \(collectionView?.numberOfItems) members")
+        photosToDisplay.append(photo)
         
-        //self.collectionView!.reloadData()
+        print("Adding a photo to the collection.  colleciton has \(photosToDisplay.count) members")
+        
+        self.collectionView!.reloadData()
     }
     
     /******************************************************/
@@ -90,6 +92,9 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         //cell.setText(meme.topText as String) + " " + (meme.bottomText as String)
         //TODO: fix following line to set image
         //cell.imageView.image = meme.memedImage
+        
+        //set the label
+        cell.label.text = String(photo.id)
         
         return cell
     }
