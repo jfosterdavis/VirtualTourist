@@ -104,6 +104,7 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
             let photoTour = storyboard?.instantiateViewController(withIdentifier: "PhotoTourViewController") as! PhotoTourViewController
             let pin = view.annotation as! Pin
             photoTour.pin = pin
+                        
             self.navigationController?.pushViewController(photoTour, animated: true)
            
         }
@@ -151,6 +152,23 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
         mapView.addAnnotations(fetchModelPins())
     }
     
+    /******************************************************/
+    /******************* Navigation **************/
+    /******************************************************/
+    //MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        if segue.identifier! == "PhotoTourViewController" {
+            
+            if let vtVC = segue.destination as? PhotoTourViewController {
+                
+                //TODO: see if I need to use this
+            }
+        }
+    }
     
     /******************************************************/
     /******************* GestureHandlerDelegate **************/

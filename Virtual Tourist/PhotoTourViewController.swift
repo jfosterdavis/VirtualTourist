@@ -47,7 +47,7 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         
         //flickrTest()
         
-        flickrGetPhotosNearPin()
+        setupCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -205,16 +205,41 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let stack = delegate.stack
         
-        // Create a fetchrequest
+        // Create Fetch Request
         let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "FlickrPhoto")
-        fr.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false),NSSortDescriptor(key: "title", ascending: true)]
         
-        // So far we have a search that will match ALL Pins.
+        fr.sortDescriptors = [NSSortDescriptor(key: "title", ascending: false),NSSortDescriptor(key: "id", ascending: true)]
         
-        // Create the FetchedResultsController
+        // So far we have a search that will match ALL notes. However, we're
+        // only interested in those within the current notebook:
+        // NSPredicate to the rescue!
+        
+        let pred = NSPredicate(format: "pin = %@", argumentArray: [self.pin!])
+        
+        fr.predicate = pred
+        
+        // Create FetchedResultsController
         let fc = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
         
         self.fetchedResultsController = fc
+        
+    }
+    
+    func fetchModelFlickrPhotos() -> [FlickrPhoto] {
+        return fetchedResultsController!.fetchedObjects as! [FlickrPhoto]
+    }
+    
+    func setupCollectionView() {
+        //TODO: Clear the contents of the collection view first?
+        
+        //if there are stored FlickrPhotos in the model, load them into the collection view
+        photosToDisplay = fetchModelFlickrPhotos()
+        
+        //if the contents is empty, the load some contents
+        if photosToDisplay.count < 1 {
+            flickrGetPhotosNearPin()
+        }
+            
         
     }
     
