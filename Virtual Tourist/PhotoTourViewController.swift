@@ -63,7 +63,7 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     
     func addFlickrPhotoToCollection(photo: FlickrPhoto) {
         //TODO: add the photo to the collection
-        photosToDisplay.append(photo)
+        //photosToDisplay.append(photo)
         
         //print("Adding a photo to the collection.  colleciton has \(photosToDisplay.count) members")
         
