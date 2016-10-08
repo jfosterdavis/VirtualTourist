@@ -9,12 +9,17 @@
 import Foundation
 import UIKit
 import MapKit
+import CoreData
 
-class PhotoTourViewController: UIViewController,  MKMapViewDelegate{
+class PhotoTourViewController: CoreDataMapViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var newCollectionButton: UIButton!
+    
+    ///Number of photos to show int he collection view
+    var numberPhotosToDisplay = 10
+    var photosToDisplay = [FlickrPhoto]()
 
     var pin: Pin?
     
@@ -28,6 +33,8 @@ class PhotoTourViewController: UIViewController,  MKMapViewDelegate{
         
         //set delegates
         mapView.delegate = self
+        
+        setupFetchedResultsController()
         
         plotAndZoomPin()
         
@@ -45,14 +52,70 @@ class PhotoTourViewController: UIViewController,  MKMapViewDelegate{
         if let pin = pin {
             GCDBlackBox.runNetworkFunctionInBackground {
                 FlickrClient.sharedInstance.getFlickrSearchNearLatLong(pin.latitude, long: pin.longitude) { (results, error) in
-                    if results != nil {
-                        print("Successful getFlickrSearchNearLatLong.  Results: \(results)")
-                    } else {
-                        print("Error with getFlickrSearchNearLatLong.  Error: \(error)")
-                    }
+                    GCDBlackBox.performUIUpdatesOnMain {
+                        if let flickrPhotos = results as? FlickrPhotoResults {
+                            print("Successful getFlickrSearchNearLatLong.  Results: \(flickrPhotos)")
+                            //results are a FlickrPhotoResults array of FlickrPhotoResult objects
+                            
+                            if !(flickrPhotos.photos.isEmpty) {
+                                //there is at least 1 photo returned
+                                
+                                //get a shuffled array of the images
+                                let shuffledFlickrPhotosArray = flickrPhotos.photos.shuffled()
+                                
+                                //take the first x number of photos
+                                for index in 0...(self.numberPhotosToDisplay-1) {
+                                    //only do this if the index falls within the length of the array
+                                    if index < shuffledFlickrPhotosArray.count {
+                                    
+                                    //create FlickrPhoto objects
+                                    let newFlickrPhoto = FlickrPhoto(FlickrResult: shuffledFlickrPhotosArray[index], context: self.fetchedResultsController!.managedObjectContext)
+                                    print("Just created a new FlickrPhoto: \(newFlickrPhoto)")
+                                    //place the objects into the collection
+                                    
+                                    //tell the objects to download their photos
+                                    }
+                                }
+                                
+                            } else {
+                                //there were no photos returned
+                                //TODO: Handle case where no photos returned
+                                print("There were no photos returned: \(flickrPhotos.photos)")
+                            }
+                            
+                        } else {
+                            //TODO: handle case where looking for photos resulted in a parsing error
+                            print("Error with getFlickrSearchNearLatLong.  Error: \(error)")
+                        }
+                    }// end performingUIUpdatesOnMain
                 }
-            }
+            }//end GCDBlackBox.runNetworkFunctionInBackground
         }
+    }
+    
+    /******************************************************/
+    /******************* Model Operations **************/
+    /******************************************************/
+    //MARK: - Model Operations
+    
+    func setupFetchedResultsController(){
+        
+        //set up stack and fetchrequest
+        // Get the stack
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        let stack = delegate.stack
+        
+        // Create a fetchrequest
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
+        fr.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false),NSSortDescriptor(key: "title", ascending: true)]
+        
+        // So far we have a search that will match ALL Pins.
+        
+        // Create the FetchedResultsController
+        let fc = NSFetchedResultsController(fetchRequest: fr, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        self.fetchedResultsController = fc
+        
     }
     
     

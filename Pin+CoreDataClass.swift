@@ -28,7 +28,7 @@ public class Pin: NSManagedObject, MKAnnotation {
                 self.subtitle = givenSubtitle
             }
         } else {
-            fatalError("Unable to find Entity name!")
+            fatalError("Unable to find Entity name! (Pin)")
         }
     }
     
