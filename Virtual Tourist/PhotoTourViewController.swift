@@ -43,11 +43,13 @@ class PhotoTourViewController: UIViewController,  MKMapViewDelegate{
     
     func flickrGetPhotosNearPin(){
         if let pin = pin {
-            FlickrClient.sharedInstance.getFlickrSearchNearLatLong(pin.latitude, long: pin.longitude) { (results, error) in
-                if results != nil {
-                    print("Successful getFlickrSearchNearLatLong.  Results: \(results)")
-                } else {
-                    print("Error with getFlickrSearchNearLatLong.  Error: \(error)")
+            GCDBlackBox.runNetworkFunctionInBackground {
+                FlickrClient.sharedInstance.getFlickrSearchNearLatLong(pin.latitude, long: pin.longitude) { (results, error) in
+                    if results != nil {
+                        print("Successful getFlickrSearchNearLatLong.  Results: \(results)")
+                    } else {
+                        print("Error with getFlickrSearchNearLatLong.  Error: \(error)")
+                    }
                 }
             }
         }

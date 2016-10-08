@@ -33,6 +33,7 @@
 		F67A76911DA822EF00C7AF73 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A76901DA822EF00C7AF73 /* Utilities.swift */; };
 		F67A76991DA9223100C7AF73 /* FlickrPhoto+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A76971DA9223100C7AF73 /* FlickrPhoto+CoreDataClass.swift */; };
 		F67A769A1DA9223100C7AF73 /* FlickrPhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A76981DA9223100C7AF73 /* FlickrPhoto+CoreDataProperties.swift */; };
+		F67A769C1DA9301D00C7AF73 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A769B1DA9301D00C7AF73 /* GCDBlackBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		F67A76921DA91E5E00C7AF73 /* Virtual_Tourist 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Virtual_Tourist 2.xcdatamodel"; sourceTree = "<group>"; };
 		F67A76971DA9223100C7AF73 /* FlickrPhoto+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FlickrPhoto+CoreDataClass.swift"; path = "../FlickrPhoto+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F67A76981DA9223100C7AF73 /* FlickrPhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FlickrPhoto+CoreDataProperties.swift"; path = "../FlickrPhoto+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F67A769B1DA9301D00C7AF73 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				F67A76371D9D78A200C7AF73 /* AppDelegate.swift */,
+				F67A769B1DA9301D00C7AF73 /* GCDBlackBox.swift */,
 				F67A76681D9D78CE00C7AF73 /* Model */,
 				F67A76781D9D933400C7AF73 /* View */,
 				F67A76691D9D78DB00C7AF73 /* Controller */,
@@ -382,6 +385,7 @@
 				F67A769A1DA9223100C7AF73 /* FlickrPhoto+CoreDataProperties.swift in Sources */,
 				F67A768F1DA6F1DF00C7AF73 /* FlickrPhotoResult.swift in Sources */,
 				F67A767E1D9E8CAC00C7AF73 /* Pin+CoreDataProperties.swift in Sources */,
+				F67A769C1DA9301D00C7AF73 /* GCDBlackBox.swift in Sources */,
 				F67A76871DA595AA00C7AF73 /* FlickrConvenience.swift in Sources */,
 				F67A76401D9D78A200C7AF73 /* Virtual_Tourist.xcdatamodeld in Sources */,
 				F67A767D1D9E8CAC00C7AF73 /* Pin+CoreDataClass.swift in Sources */,
