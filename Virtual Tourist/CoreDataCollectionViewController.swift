@@ -31,6 +31,8 @@ class CoreDataCollectionViewController: UIViewController, UICollectionViewDelega
     var collectionView: UICollectionView!
     var photosToDisplay = [FlickrPhoto]()
     
+    var stack: CoreDataStack!
+    
     /******************************************************/
     /******************* Life Cycle **************/
     /******************************************************/
@@ -39,6 +41,9 @@ class CoreDataCollectionViewController: UIViewController, UICollectionViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Get the stack
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        stack = delegate.stack
     }
     
 }
@@ -103,6 +108,8 @@ extension CoreDataCollectionViewController: NSFetchedResultsControllerDelegate {
                 print("case move")
             }
             
+            //save
+            stack.save()
             
         } else
         {

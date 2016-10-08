@@ -29,6 +29,7 @@ class CoreDataMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     var coreMapView: MKMapView!
+    var stack: CoreDataStack!
     
     /******************************************************/
     /******************* Life Cycle **************/
@@ -37,6 +38,10 @@ class CoreDataMapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Get the stack
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        stack = delegate.stack
         
     }
        
@@ -99,6 +104,9 @@ extension CoreDataMapViewController: NSFetchedResultsControllerDelegate {
                 coreMapView.removeAnnotation(thePin)
                 coreMapView.addAnnotation(thePin)
             }
+            
+            //save
+            stack.save()
         } else
         {
             fatalError("Couldn't get a pin from anObject in didChange")
