@@ -71,6 +71,36 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     }
     
     /******************************************************/
+    /******************* Actions **************/
+    /******************************************************/
+    //MARK: - Actions
+    
+    ///called when the collection button is pressed
+    @IBAction func newCollectionButtonPressed(_ sender: AnyObject) {
+        //clear the model
+        if let context = fetchedResultsController?.managedObjectContext {
+            for photo in photosToDisplay {
+                context.delete(photo)
+                
+                print("There are \(photosToDisplay.count) objects remaining")
+            }
+            
+            photosToDisplay.removeAll()
+            self.collectionView.reloadData()
+        }
+        
+        
+        
+        print("Pre Batch: There are \(photosToDisplay.count) objects remaining")
+        //request another batch
+        flickrGetPhotosNearPin()
+        
+        //self.collectionView.reloadData()
+        
+    }
+    
+    
+    /******************************************************/
     /******************* UICollectionView Delegate and Data Source **************/
     /******************************************************/
     //MARK: - UICollectionView Delegate and Data Source

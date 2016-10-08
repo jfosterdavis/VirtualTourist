@@ -99,6 +99,7 @@ extension CoreDataCollectionViewController: NSFetchedResultsControllerDelegate {
                 print("case insert")
             case .delete:
                 //TODO: Delete from collection view
+                photosToDisplay.removeObject(object: theFlickrPhoto)
                 print("case delete")
             case .update:
                 //TODO: replace a cell in the collection view

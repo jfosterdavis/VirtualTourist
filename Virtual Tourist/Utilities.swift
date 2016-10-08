@@ -37,3 +37,20 @@ extension Sequence {
         return result
     }
 }
+
+
+/******************************************************/
+/******************* Removing Object From Array by Value **************/
+//http://stackoverflow.com/questions/24938948/array-extension-to-remove-object-by-value
+/******************************************************/
+//MARK: - Removing Object From Array by Value
+
+extension Array where Element: Equatable {
+    
+    // Remove first collection element that is equal to the given `object`:
+    mutating func removeObject(object: Element) {
+        if let index = index(of: object) {
+            remove(at: index)
+        }
+    }
+}
