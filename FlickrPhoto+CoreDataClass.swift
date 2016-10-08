@@ -32,9 +32,9 @@ public class FlickrPhoto: NSManagedObject {
             self.farm = Int64(farm)
             self.height = Int64(height)
             self.id = Int64(id)
-            self.isFamily = Int64(isFamily)
-            self.isFriend = Int64(isFriend)
-            self.isPublic = Int64(isPublic)
+            self.isFamily = isFamily
+            self.isFriend = isFriend
+            self.isPublic = isPublic
             self.owner = owner
             self.secret = secret
             self.server = Int64(server)

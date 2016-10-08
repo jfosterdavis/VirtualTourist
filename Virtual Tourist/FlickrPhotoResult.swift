@@ -21,9 +21,9 @@ struct FlickrPhotoResult {
     var farm : Int?
     var height : Int?
     var id : Int?
-    var isFamily: Int?
-    var isFriend: Int?
-    var isPublic: Int?
+    var isFamily: Bool?
+    var isFriend: Bool?
+    var isPublic: Bool?
     var owner: String?
     var secret: String?
     var server: Int?
@@ -189,20 +189,26 @@ struct FlickrPhotoResult {
                     throw FlickrPhotoAssignmentError.badInputValues(property: "id")
                 }
             case "isfamily":
-                if let value = value as? Int {
-                    isFamily = value
+                if let value = value as? Int , value == 0 {
+                    isFamily = false
+                } else if let value = value as? Int , value == 1 {
+                    isFamily = true
                 } else {
                     throw FlickrPhotoAssignmentError.badInputValues(property: "isfamily")
                 }
             case "isfriend":
-                if let value = value as? Int {
-                    isFriend = value
+                if let value = value as? Int , value == 0 {
+                    isFriend = false
+                } else if let value = value as? Int , value == 1 {
+                    isFriend = true
                 } else {
                     throw FlickrPhotoAssignmentError.badInputValues(property: "isfriend")
                 }
             case "ispublic":
-                if let value = value as? Int {
-                    isPublic = value
+                if let value = value as? Int , value == 0 {
+                    isPublic = false
+                } else if let value = value as? Int , value == 1 {
+                    isPublic = true
                 } else {
                     throw FlickrPhotoAssignmentError.badInputValues(property: "ispublic")
                 }

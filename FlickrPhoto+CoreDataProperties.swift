@@ -20,9 +20,9 @@ extension FlickrPhoto {
     @NSManaged public var farm: Int64
     @NSManaged public var height: Int64
     @NSManaged public var id: Int64
-    @NSManaged public var isFamily: Int64
-    @NSManaged public var isFriend: Int64
-    @NSManaged public var isPublic: Int64
+    @NSManaged public var isFamily: Bool
+    @NSManaged public var isFriend: Bool
+    @NSManaged public var isPublic: Bool
     @NSManaged public var owner: String
     @NSManaged public var secret: String
     @NSManaged public var server: Int64
