@@ -103,7 +103,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="Aba-DK-xwi" id="b2p-zS-miR"/>
+                        <outlet property="IBCollectionView" destination="Aba-DK-xwi" id="Cvl-Dw-Y0C"/>
+                        <outlet property="flowLayout" destination="Jw4-0P-hfN" id="3Jr-er-Cse"/>
                         <outlet property="mapView" destination="bOs-Es-BG1" id="Cvv-Fx-SMp"/>
                         <outlet property="newCollectionButton" destination="SAc-kP-3Ke" id="Mut-2l-HUQ"/>
                     </connections>
