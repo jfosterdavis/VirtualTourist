@@ -60,15 +60,8 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     /******************* Collection Operations **************/
     /******************************************************/
     //MARK: - Collection Operations
+
     
-    func addFlickrPhotoToCollection(photo: FlickrPhoto) {
-        //TODO: add the photo to the collection
-        //photosToDisplay.append(photo)
-        
-        //print("Adding a photo to the collection.  colleciton has \(photosToDisplay.count) members")
-        
-        //self.collectionView!.reloadData()
-    }
     
     /******************************************************/
     /******************* Actions **************/
@@ -205,8 +198,9 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
                                         newFlickrPhoto.pin = self.pin
                                         print("Just created a new FlickrPhoto: \(newFlickrPhoto.id)")
                                         
-                                        //place the objects into the collection
-                                        self.addFlickrPhotoToCollection(photo: newFlickrPhoto)
+                                        //fetch photo data
+                                        newFlickrPhoto.checkAndDownloadImage()
+                                        
                                     
                                     }
                                 }

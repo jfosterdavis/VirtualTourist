@@ -70,5 +70,25 @@ public class FlickrPhoto: NSManagedObject {
     func flickrDownloadImageData() {
         //download image data based on the URL
         
+        //TODO: start activity spinner
+        GCDBlackBox.runNetworkFunctionInBackground {
+            let _ = FlickrClient.sharedInstance.taskForGETImage(filePath: self.url) {
+                (imageData, error) in
+                GCDBlackBox.performUIUpdatesOnMain {
+                    if let imageDataNS = imageData as NSData? {
+                        
+                        self.imageData = imageDataNS
+                        print("Image data succesfully retireved and set")
+                        
+                    } else {
+                        //there was an error
+                        //TODO: handle error
+                    }
+                    
+                    //TODO: stop activity spinner
+                }//endUI updates on main
+            }
+        }//end background black box
     }
+    
 }
