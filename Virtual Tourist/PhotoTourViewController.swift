@@ -118,13 +118,17 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FlickrPhotoCollectionCell", for: indexPath as IndexPath) as! CustomVirtualTouristCollectionViewCell
         let photo = self.photosToDisplay[indexPath.row]
         
-        // Set the image
-        //cell.setText(meme.topText as String) + " " + (meme.bottomText as String)
-        //TODO: fix following line to set image
-        //cell.imageView.image = meme.memedImage
+        //associate the photo with this cell, which will set all parts of image view or start download
+        cell.flickrPhoto = photo
+        
+        //TODO: Check if the photo image is already present
+        
+            //TODO: If it is then make this image the cell view image
+        
+            //TODO: If it is not then tell the photo object to download the image and start the activity indicator
         
         //set the label
-        cell.label.text = String(photo.id)
+        //cell.label.text = String(photo.id)
         
         return cell
     }

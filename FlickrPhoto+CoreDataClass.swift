@@ -52,4 +52,23 @@ public class FlickrPhoto: NSManagedObject {
         }
 
     }
+    
+    /******************************************************/
+    /*************///MARK: - General Functions
+    /******************************************************/
+    
+    func checkAndDownloadImage() {
+        if self.imageData == nil {
+            flickrDownloadImageData()
+        }
+    }
+    
+    /******************************************************/
+    /*************///MARK: - Network
+    /******************************************************/
+    
+    func flickrDownloadImageData() {
+        //download image data based on the URL
+        
+    }
 }
