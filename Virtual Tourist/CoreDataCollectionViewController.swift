@@ -68,8 +68,7 @@ extension CoreDataCollectionViewController {
 extension CoreDataCollectionViewController: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        print("About to reload collection view data")
-        self.collectionView!.reloadData()
+        
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
@@ -99,7 +98,7 @@ extension CoreDataCollectionViewController: NSFetchedResultsControllerDelegate {
                 print("case insert")
             case .delete:
                 //TODO: Delete from collection view
-                photosToDisplay.removeObject(object: theFlickrPhoto)
+                removeFromPhotosToDisplayByID(removeThisPhoto: theFlickrPhoto)
                 print("case delete")
             case .update:
                 //TODO: replace a cell in the collection view
@@ -120,5 +119,15 @@ extension CoreDataCollectionViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         //tableView.endUpdates()
+        print("About to reload collection view data")
+        self.collectionView!.reloadData()
+    }
+    
+    func removeFromPhotosToDisplayByID(removeThisPhoto: FlickrPhoto) {
+        for photo in photosToDisplay {
+            if photo.id == removeThisPhoto.id {
+                photosToDisplay.removeObject(object: photo)
+            }
+        }
     }
 }

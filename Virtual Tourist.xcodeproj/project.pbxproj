@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F6592E441DB0372F00182AFD /* CustomVirtualTouristCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6592E431DB0372F00182AFD /* CustomVirtualTouristCollectionViewCellController.swift */; };
 		F67A76381D9D78A200C7AF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A76371D9D78A200C7AF73 /* AppDelegate.swift */; };
 		F67A763D1D9D78A200C7AF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67A763B1D9D78A200C7AF73 /* Main.storyboard */; };
 		F67A76401D9D78A200C7AF73 /* Virtual_Tourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F67A763E1D9D78A200C7AF73 /* Virtual_Tourist.xcdatamodeld */; };
@@ -57,7 +56,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F6592E431DB0372F00182AFD /* CustomVirtualTouristCollectionViewCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomVirtualTouristCollectionViewCellController.swift; sourceTree = "<group>"; };
 		F67A76341D9D78A200C7AF73 /* Virtual Tourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F67A76371D9D78A200C7AF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F67A763C1D9D78A200C7AF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 				F67A76721D9D871B00C7AF73 /* TourMapViewController.swift */,
 				F67A76A11DA9559700C7AF73 /* CoreDataCollectionViewController.swift */,
 				F67A76811DA585A900C7AF73 /* PhotoTourViewController.swift */,
-				F6592E431DB0372F00182AFD /* CustomVirtualTouristCollectionViewCellController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -410,7 +407,6 @@
 				F67A76821DA585A900C7AF73 /* PhotoTourViewController.swift in Sources */,
 				F67A76851DA5958E00C7AF73 /* FlickrClient.swift in Sources */,
 				F67A76381D9D78A200C7AF73 /* AppDelegate.swift in Sources */,
-				F6592E441DB0372F00182AFD /* CustomVirtualTouristCollectionViewCellController.swift in Sources */,
 				F67A768D1DA6F12100C7AF73 /* FlickrPhotoSearchResults.swift in Sources */,
 				F67A76761D9D931B00C7AF73 /* VTLongPressGR.swift in Sources */,
 			);

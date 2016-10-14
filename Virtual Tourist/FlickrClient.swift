@@ -106,7 +106,7 @@ class FlickrClient : NSObject {
         //        request.addValue(Secrets.FlickrRESTAPIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
         
         /* 4. Make the request */
-        print("Starting task for URL: \(request)")
+        print("Starting task for URL: \(request.url!)")
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
             func sendError(_ error: String, code: Int) {

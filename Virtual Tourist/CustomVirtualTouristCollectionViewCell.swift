@@ -26,11 +26,9 @@ class CustomVirtualTouristCollectionViewCell: UICollectionViewCell {
             //adapted from http://stackoverflow.com/questions/32297704/convert-uiimage-to-nsdata-and-convert-back-to-uiimage-in-swift
             if let imageData = flickrPhoto?.imageData {
                 self.imageView?.image = UIImage(data:imageData as Data,scale:1.0)
+            } else {
+                self.imageView?.image = nil
             }
-            //TODO: if there is no image, then go download it
-//            else if let photo = flickrPhoto? {
-//                photo.checkAndDownloadImage()
-//            }
             
         }
     }

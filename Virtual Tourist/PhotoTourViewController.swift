@@ -78,7 +78,7 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
                 print("There are \(photosToDisplay.count) objects remaining")
             }
             
-            photosToDisplay.removeAll()
+            //photosToDisplay.removeAll()
             self.collectionView.reloadData()
         }
         
