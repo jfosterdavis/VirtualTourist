@@ -37,7 +37,7 @@ class CustomVirtualTouristCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
     
     /** Spinning wheel to show user that network activity is in progress */
-    weak var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     /******************************************************/
     /*************///MARK: - Activity Indicator

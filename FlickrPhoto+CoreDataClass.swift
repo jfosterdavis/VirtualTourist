@@ -12,6 +12,8 @@ import CoreData
 
 public class FlickrPhoto: NSManagedObject {
     
+    var isTransitioningImage = false
+    
     convenience init(FlickrResult: FlickrPhotoResult, context: NSManagedObjectContext){
         
         if let ent = NSEntityDescription.entity(forEntityName: "FlickrPhoto", in: context) {
@@ -71,6 +73,7 @@ public class FlickrPhoto: NSManagedObject {
         //download image data based on the URL
         
         //TODO: start activity spinner
+        isTransitioningImage = true
         GCDBlackBox.runNetworkFunctionInBackground {
             let _ = FlickrClient.sharedInstance.taskForGETImage(filePath: self.url) {
                 (imageData, error) in
@@ -86,6 +89,7 @@ public class FlickrPhoto: NSManagedObject {
                     }
                     
                     //TODO: stop activity spinner
+                    self.isTransitioningImage = false
                 }//endUI updates on main
             }
         }//end background black box

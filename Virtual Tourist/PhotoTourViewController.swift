@@ -111,8 +111,14 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FlickrPhotoCollectionCell", for: indexPath as IndexPath) as! CustomVirtualTouristCollectionViewCell
         let photo = self.photosToDisplay[indexPath.row]
         
-        //associate the photo with this cell, which will set all parts of image view or start download
+        //associate the photo with this cell, which will set all parts of image view
         cell.flickrPhoto = photo
+        
+        if photo.isTransitioningImage {
+            cell.startActivityIndicator()
+        } else {
+            cell.stopActivityIndicator()
+        }
         
         //TODO: Check if the photo image is already present
         

@@ -57,12 +57,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOs-Es-BG1">
+                            <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOs-Es-BG1">
+                                <frame key="frameInset" width="375" height="208"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="190" id="uwd-o1-DdF"/>
                                 </constraints>
                             </mapView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Aba-DK-xwi">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAc-kP-3Ke">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="drV-lg-fpN"/>
+                                </constraints>
+                                <state key="normal" title="Get new set of photos"/>
+                                <connections>
+                                    <action selector="newCollectionButtonPressed:" destination="3H8-mY-ZXt" eventType="touchUpInside" id="LFR-5C-17d"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Aba-DK-xwi">
+                                <frame key="frameInset" minY="216" width="375" height="405"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jw4-0P-hfN">
                                     <size key="itemSize" width="104" height="109"/>
@@ -78,10 +89,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="104" height="109"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WOF-TJ-kxY">
-                                                    <frame key="frameInset" width="104" height="109"/>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Vmj-Uq-s9W">
+                                                    <frame key="frameInset" minX="42" minY="44" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
+                                                </activityIndicatorView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WOF-TJ-kxY"/>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyl-PX-XNq">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -90,26 +102,22 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="WOF-TJ-kxY" firstAttribute="top" secondItem="zjD-Ej-sSY" secondAttribute="top" id="Nmq-9W-Tqx"/>
                                             <constraint firstAttribute="bottom" secondItem="Fyl-PX-XNq" secondAttribute="bottom" constant="8" id="QTC-RN-JlA"/>
+                                            <constraint firstItem="WOF-TJ-kxY" firstAttribute="trailing" secondItem="Fyl-PX-XNq" secondAttribute="trailing" id="aSc-rt-0Pa"/>
+                                            <constraint firstItem="WOF-TJ-kxY" firstAttribute="leading" secondItem="Fyl-PX-XNq" secondAttribute="leading" id="ec1-TF-4of"/>
                                             <constraint firstAttribute="trailing" secondItem="Fyl-PX-XNq" secondAttribute="trailing" id="jwN-MK-Xt9"/>
                                             <constraint firstItem="Fyl-PX-XNq" firstAttribute="leading" secondItem="zjD-Ej-sSY" secondAttribute="leading" id="t9k-6h-6oP"/>
+                                            <constraint firstAttribute="bottom" secondItem="WOF-TJ-kxY" secondAttribute="bottom" id="xFd-Ie-Bwe"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="Vmj-Uq-s9W" id="t5L-wO-0SC"/>
                                             <outlet property="imageView" destination="WOF-TJ-kxY" id="3Bf-V7-jMP"/>
                                             <outlet property="label" destination="Fyl-PX-XNq" id="ibJ-dS-ccN"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAc-kP-3Ke">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="drV-lg-fpN"/>
-                                </constraints>
-                                <state key="normal" title="Get new set of photos"/>
-                                <connections>
-                                    <action selector="newCollectionButtonPressed:" destination="3H8-mY-ZXt" eventType="touchUpInside" id="LFR-5C-17d"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
