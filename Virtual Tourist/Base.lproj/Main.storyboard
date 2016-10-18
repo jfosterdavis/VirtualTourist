@@ -113,19 +113,19 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name this tour" textAlignment="center" minimumFontSize="8" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="w29-Hh-OUV">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bOs-Es-BG1" firstAttribute="leading" secondItem="QYj-ta-uwR" secondAttribute="leading" id="1I2-3g-ZhA"/>
-                            <constraint firstItem="w29-Hh-OUV" firstAttribute="top" secondItem="bOs-Es-BG1" secondAttribute="bottom" constant="8" symbolic="YES" id="37I-2i-Z5Z"/>
                             <constraint firstAttribute="trailing" secondItem="bOs-Es-BG1" secondAttribute="trailing" id="560-Zd-Wbj"/>
                             <constraint firstItem="Aba-DK-xwi" firstAttribute="top" secondItem="w29-Hh-OUV" secondAttribute="bottom" constant="3" id="7Pm-Wr-5aB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SAc-kP-3Ke" secondAttribute="trailing" constant="42" id="C0o-T9-xHc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="w29-Hh-OUV" secondAttribute="trailing" constant="-16" id="EBb-KL-Vxx"/>
                             <constraint firstItem="Aba-DK-xwi" firstAttribute="leading" secondItem="QYj-ta-uwR" secondAttribute="leading" id="JRG-Ac-iZF"/>
                             <constraint firstItem="SAc-kP-3Ke" firstAttribute="top" secondItem="Aba-DK-xwi" secondAttribute="bottom" constant="5" id="UlN-mw-qqU"/>
+                            <constraint firstItem="w29-Hh-OUV" firstAttribute="top" secondItem="bOs-Es-BG1" secondAttribute="bottom" id="Y2D-iI-6el"/>
                             <constraint firstItem="SAc-kP-3Ke" firstAttribute="leading" secondItem="QYj-ta-uwR" secondAttribute="leadingMargin" constant="41" id="Ymo-ij-ILn"/>
                             <constraint firstItem="bOs-Es-BG1" firstAttribute="top" secondItem="QYj-ta-uwR" secondAttribute="top" id="c6c-1U-Tfk"/>
                             <constraint firstItem="Egy-BS-dLu" firstAttribute="top" secondItem="SAc-kP-3Ke" secondAttribute="bottom" constant="8" id="qc8-dQ-oI5"/>

@@ -13,14 +13,17 @@ import CoreData
 
 class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelegate, UICollectionViewDataSource {
     
+    //veiws
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var IBCollectionView: UICollectionView!
     @IBOutlet weak var newCollectionButton: UIButton!
-    
-    @IBOutlet weak var tourTitleTextField: UITextField!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-    ///Number of photos to show int he collection view
+    //text field
+    @IBOutlet weak var tourTitleTextField: UITextField!
+    let textFieldDelegate = PhotoTourTextFieldDelegate()
+    
+    ///Number of photos to show in the collection view
     let numberPhotosToDisplay = 5
     
 
@@ -36,6 +39,7 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         
         //set delegates
         mapView.delegate = self
+        self.tourTitleTextField.delegate = textFieldDelegate
         
         //set collection view
         collectionView = IBCollectionView
@@ -55,6 +59,14 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         super.viewWillAppear(animated)
         
         self.collectionView.reloadData()
+    }
+    
+    /******************************************************/
+    /*******************///MARK: Text Operations
+    /******************************************************/
+
+    func loadText() {
+        
     }
     
     /******************************************************/

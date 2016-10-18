@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F64BF3FC1DB6A25200720C5E /* PhotoTourTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64BF3FB1DB6A25200720C5E /* PhotoTourTextFieldDelegate.swift */; };
 		F67A76381D9D78A200C7AF73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67A76371D9D78A200C7AF73 /* AppDelegate.swift */; };
 		F67A763D1D9D78A200C7AF73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F67A763B1D9D78A200C7AF73 /* Main.storyboard */; };
 		F67A76401D9D78A200C7AF73 /* Virtual_Tourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F67A763E1D9D78A200C7AF73 /* Virtual_Tourist.xcdatamodeld */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F64BF3FB1DB6A25200720C5E /* PhotoTourTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTourTextFieldDelegate.swift; sourceTree = "<group>"; };
 		F67A76341D9D78A200C7AF73 /* Virtual Tourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F67A76371D9D78A200C7AF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F67A763C1D9D78A200C7AF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F64BF3FA1DB6A23400720C5E /* Text Field Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				F64BF3FB1DB6A25200720C5E /* PhotoTourTextFieldDelegate.swift */,
+			);
+			name = "Text Field Delegates";
+			sourceTree = "<group>";
+		};
 		F67A762B1D9D78A200C7AF73 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +198,7 @@
 		F67A76691D9D78DB00C7AF73 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F64BF3FA1DB6A23400720C5E /* Text Field Delegates */,
 				F67A767F1D9E8E8E00C7AF73 /* CoreDataMapViewController.swift */,
 				F67A76721D9D871B00C7AF73 /* TourMapViewController.swift */,
 				F67A76A11DA9559700C7AF73 /* CoreDataCollectionViewController.swift */,
@@ -402,6 +413,7 @@
 				F67A767A1D9DA11600C7AF73 /* CoreDataStack.swift in Sources */,
 				F67A76A21DA9559700C7AF73 /* CoreDataCollectionViewController.swift in Sources */,
 				F67A76891DA595BC00C7AF73 /* FlickrConstants.swift in Sources */,
+				F64BF3FC1DB6A25200720C5E /* PhotoTourTextFieldDelegate.swift in Sources */,
 				F67A76911DA822EF00C7AF73 /* Utilities.swift in Sources */,
 				F67A768B1DA595CC00C7AF73 /* Secrets.swift in Sources */,
 				F67A76821DA585A900C7AF73 /* PhotoTourViewController.swift in Sources */,
