@@ -17,6 +17,7 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     @IBOutlet weak var IBCollectionView: UICollectionView!
     @IBOutlet weak var newCollectionButton: UIButton!
     
+    @IBOutlet weak var tourTitleTextField: UITextField!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     ///Number of photos to show int he collection view
@@ -148,18 +149,18 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         //following layout approach adapted from
         //http://stackoverflow.com/questions/34132766/uicollectionview-resizing-cells-on-device-rotate-swift
         //http://swiftiostutorials.com/tutorial-using-uicollectionview-uicollectionviewflowlayout/
-        if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) { //If landscape mode
+        if UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation) { //If portrait mode
             //implement flow layout
-            space = 3.0
-            // have 4 items across if in landscape
-            let numberOfItems: CGFloat = 4
+            space = 1.0
+            // have 2 items across if in portrait
+            let numberOfItems: CGFloat = 3
             let spacingConstant: CGFloat = numberOfItems - 1
             dimension = (self.view.frame.size.width - (2 * space) - (spacingConstant * space)) / numberOfItems
-        } else { //if portrait mode
+        } else { //if not in portrait mode
             //implement flow layout
-            space = 3.0
-            // have 3 items across if in portrait
-            let numberOfItems: CGFloat = 3
+            space = 1.0
+            // have 2 items across if in not portrait
+            let numberOfItems: CGFloat = 2
             let spacingConstant: CGFloat = numberOfItems - 1
             dimension = (self.view.frame.size.width - (2 * space) - (spacingConstant * space)) / numberOfItems
         }
@@ -167,7 +168,7 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.sectionInset = UIEdgeInsets(top: space, left: space, bottom: space, right: space)
-        //flowLayout.itemSize = CGSizeMake(dimension, dimension)
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
     }
     
     
