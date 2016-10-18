@@ -92,21 +92,21 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </activityIndicatorView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WOF-TJ-kxY"/>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyl-PX-XNq">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyl-PX-XNq">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="7"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="Fyl-PX-XNq" firstAttribute="top" secondItem="WOF-TJ-kxY" secondAttribute="bottom" constant="2" id="1rb-yj-Qbh"/>
                                             <constraint firstItem="WOF-TJ-kxY" firstAttribute="top" secondItem="zjD-Ej-sSY" secondAttribute="top" id="Nmq-9W-Tqx"/>
-                                            <constraint firstAttribute="bottom" secondItem="Fyl-PX-XNq" secondAttribute="bottom" constant="8" id="QTC-RN-JlA"/>
+                                            <constraint firstAttribute="bottom" secondItem="Fyl-PX-XNq" secondAttribute="bottom" id="QTC-RN-JlA"/>
                                             <constraint firstItem="WOF-TJ-kxY" firstAttribute="trailing" secondItem="Fyl-PX-XNq" secondAttribute="trailing" id="aSc-rt-0Pa"/>
                                             <constraint firstItem="WOF-TJ-kxY" firstAttribute="leading" secondItem="Fyl-PX-XNq" secondAttribute="leading" id="ec1-TF-4of"/>
                                             <constraint firstAttribute="trailing" secondItem="Fyl-PX-XNq" secondAttribute="trailing" id="jwN-MK-Xt9"/>
                                             <constraint firstItem="Fyl-PX-XNq" firstAttribute="leading" secondItem="zjD-Ej-sSY" secondAttribute="leading" id="t9k-6h-6oP"/>
-                                            <constraint firstAttribute="bottom" secondItem="WOF-TJ-kxY" secondAttribute="bottom" id="xFd-Ie-Bwe"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="activityIndicator" destination="Vmj-Uq-s9W" id="t5L-wO-0SC"/>
