@@ -58,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		F64BF3FB1DB6A25200720C5E /* PhotoTourTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTourTextFieldDelegate.swift; sourceTree = "<group>"; };
+		F64BF3FD1DB6A9E800720C5E /* Virtual_Tourist 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Virtual_Tourist 3.xcdatamodel"; sourceTree = "<group>"; };
 		F67A76341D9D78A200C7AF73 /* Virtual Tourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Tourist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F67A76371D9D78A200C7AF73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F67A763C1D9D78A200C7AF73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -697,10 +698,11 @@
 		F67A763E1D9D78A200C7AF73 /* Virtual_Tourist.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F64BF3FD1DB6A9E800720C5E /* Virtual_Tourist 3.xcdatamodel */,
 				F67A76921DA91E5E00C7AF73 /* Virtual_Tourist 2.xcdatamodel */,
 				F67A763F1D9D78A200C7AF73 /* Virtual_Tourist.xcdatamodel */,
 			);
-			currentVersion = F67A76921DA91E5E00C7AF73 /* Virtual_Tourist 2.xcdatamodel */;
+			currentVersion = F64BF3FD1DB6A9E800720C5E /* Virtual_Tourist 3.xcdatamodel */;
 			path = Virtual_Tourist.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
