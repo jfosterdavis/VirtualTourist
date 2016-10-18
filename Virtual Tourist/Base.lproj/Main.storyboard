@@ -29,14 +29,7 @@
                             <constraint firstItem="6Iq-lQ-APU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xQN-yW-Xoh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Tours" id="b1F-LJ-KQ8">
-                        <barButtonItem key="leftBarButtonItem" title="Options" id="KUk-iH-uJ1"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="xaX-4M-agm">
-                            <connections>
-                                <segue destination="3H8-mY-ZXt" kind="show" id="00E-04-vP5"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Tours" id="b1F-LJ-KQ8"/>
                     <connections>
                         <outlet property="mapView" destination="6Iq-lQ-APU" id="Ean-1Q-Odd"/>
                     </connections>
