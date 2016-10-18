@@ -28,6 +28,19 @@ class CoreDataCollectionViewController: UIViewController, UICollectionViewDelega
         }
     }
     
+    var fetchedTextResultsController : NSFetchedResultsController<NSFetchRequestResult>? {
+        didSet {
+            // Whenever the frc changes, we execute the search and
+            // reload the table
+            fetchedTextResultsController?.delegate = self
+            executeTextSearch()
+            //TODO: Reload data
+            //coreMapView.reloadData()
+        }
+    }
+    
+    
+    
     var collectionView: UICollectionView!
     var photosToDisplay = [FlickrPhoto]()
     
@@ -58,6 +71,16 @@ extension CoreDataCollectionViewController {
                 try fc.performFetch()
             } catch let e as NSError {
                 print("Error while trying to perform a search: \n\(e)\n\(fetchedResultsController)")
+            }
+        }
+    }
+    
+    func executeTextSearch() {
+        if let fc = fetchedTextResultsController {
+            do {
+                try fc.performFetch()
+            } catch let e as NSError {
+                print("Error while trying to perform a search: \n\(e)\n\(fetchedTextResultsController)")
             }
         }
     }
@@ -110,6 +133,8 @@ extension CoreDataCollectionViewController: NSFetchedResultsControllerDelegate {
             
             //save
             stack.save()
+          
+            //TODO: Persist the text box
             
         } else
         {
