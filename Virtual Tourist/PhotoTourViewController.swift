@@ -153,8 +153,12 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         }
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt: IndexPath) {
-        print("This stub should be implimented by a child class")
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        if let cell = collectionView.cellForItem(at: indexPath) as? CustomVirtualTouristCollectionViewCell {
+            cell.imageView!.alpha = 1
+            cell.activityIndicator.alpha = 1
+        }
     }
    
     

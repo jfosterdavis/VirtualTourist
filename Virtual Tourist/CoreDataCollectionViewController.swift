@@ -71,7 +71,7 @@ class CoreDataCollectionViewController: UIViewController, UICollectionViewDelega
         print("This stub should be implimented by a child class")
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         print("This stub should be implimented by a child class")
     }
     
