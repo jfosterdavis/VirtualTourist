@@ -59,6 +59,22 @@ class CoreDataCollectionViewController: UIViewController, UICollectionViewDelega
         stack = delegate.stack
     }
     
+    /******************************************************/
+    /******************* UICollectionView Delegate and Data Source **************/
+    /******************************************************/
+    //MARK: - UICollectionView Delegate and Data Source
+    
+    
+    //When a user selects an item from the collection
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        print("This stub should be implimented by a child class")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt: IndexPath) {
+        print("This stub should be implimented by a child class")
+    }
+    
 }
 
 // MARK: - CoreDataCollectionViewController (Fetches)

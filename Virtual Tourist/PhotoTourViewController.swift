@@ -141,11 +141,20 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     }
     
     //When a user selects an item from the collection
-    func collectionView(_ collectionView: UICollectionView, didSelectItem indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         //TODO: What to do when a photo is selected
         print("about to show detail from the collection view for meme at indexPath: ",indexPath.row)
         print("A photo was selected. Here are all the index paths: \(collectionView.indexPathsForSelectedItems)")
+        
+        if let cell = collectionView.cellForItem(at: indexPath) as? CustomVirtualTouristCollectionViewCell {
+            cell.imageView!.alpha = 0.5
+            cell.activityIndicator.alpha = 0
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt: IndexPath) {
+        print("This stub should be implimented by a child class")
     }
    
     
