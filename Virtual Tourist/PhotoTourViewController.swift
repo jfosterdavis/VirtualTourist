@@ -117,7 +117,38 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     
     @IBAction func deletePhotosButtonPressed(_ sender: AnyObject) {
         
-        //TODO: delete selceted photos
+        if let context = fetchedResultsController?.managedObjectContext {
+            for indexPath in collectionView.indexPathsForSelectedItems! {
+                //deselect this item
+                collectionView.deselectItem(at: indexPath, animated: false)
+                
+                let photo = self.photosToDisplay[indexPath.row] as FlickrPhoto
+                
+                context.delete(photo)
+                
+                print("Just removed a photo. There are \(photosToDisplay.count) photos remaining.")
+                
+                
+            }
+            
+            //reload
+            self.collectionView.reloadData()
+        }
+        
+        //need to do this before you have visible cells
+        //adapted from http://stackoverflow.com/questions/26055626/uicollectionview-visiblecells-returns-0-before-scrolling
+        self.collectionView.layoutIfNeeded()
+        
+        //make each cell fully alpha so that it does not appear to be selected
+        for cell in collectionView.visibleCells as! [CustomVirtualTouristCollectionViewCell]   {
+            
+            cell.imageView!.alpha = 1
+            cell.activityIndicator.alpha = 1
+
+        }
+        buttonStateCheckAndSet()
+        
+        
     }
     
     func buttonStateCheckAndSet() {
