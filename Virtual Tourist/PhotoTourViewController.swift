@@ -24,7 +24,7 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     let textFieldDelegate = PhotoTourTextFieldDelegate()
     
     ///Number of photos to show in the collection view
-    let numberPhotosToDisplay = 5
+    let numberPhotosToDisplay = 15
     
 
     var pin: Pin?
@@ -45,6 +45,10 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         collectionView = IBCollectionView
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        //collection view selection
+        collectionView.allowsSelection = true
+        collectionView.allowsMultipleSelection = true
         
         setupFetchedResultsController()
         
@@ -133,24 +137,17 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
             cell.stopActivityIndicator()
         }
         
-        //TODO: Check if the photo image is already present
-        
-            //TODO: If it is then make this image the cell view image
-        
-            //TODO: If it is not then tell the photo object to download the image and start the activity indicator
-        
-        //set the label
-        //cell.label.text = String(photo.id)
-        
         return cell
     }
     
     //When a user selects an item from the collection
     func collectionView(_ collectionView: UICollectionView, didSelectItem indexPath: IndexPath) {
-       
-        //TODO: What to do when a photo is selected
         
+        //TODO: What to do when a photo is selected
+        print("about to show detail from the collection view for meme at indexPath: ",indexPath.row)
+        print("A photo was selected. Here are all the index paths: \(collectionView.indexPathsForSelectedItems)")
     }
+   
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

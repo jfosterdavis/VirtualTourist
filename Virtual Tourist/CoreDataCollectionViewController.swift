@@ -84,6 +84,8 @@ extension CoreDataCollectionViewController {
             }
         }
     }
+    
+    
 }
 
 // MARK: - CoreDataCollectionViewController: NSFetchedResultsControllerDelegate
