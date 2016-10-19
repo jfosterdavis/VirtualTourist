@@ -23,6 +23,8 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     @IBOutlet weak var tourTitleTextField: UITextField!
     let textFieldDelegate = PhotoTourTextFieldDelegate()
     
+    @IBOutlet weak var noPhotosLabel: UILabel!
+    
     ///Number of photos to show in the collection view
     let numberPhotosToDisplay = 15
     
@@ -70,6 +72,8 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         } else {
             tourTitleTextField.text = titlePrimer + "Untitled Location:"
         }
+        
+        setNoPhotosLabelVisible(isVisible: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,7 +120,7 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         
         print("Pre Batch: There are \(photosToDisplay.count) objects remaining")
         //request another batch
-        flickrGetPhotosNearPin()
+        flickrGetPhotosNearPin(radius: 5.0, tryAgain: true)
         
         //self.collectionView.reloadData()
         
@@ -185,6 +189,16 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
             newCollectionButton.alpha = 1
         } else {
             newCollectionButton.alpha = 0
+        }
+    }
+    
+    func setNoPhotosLabelVisible(isVisible: Bool) {
+        if isVisible {
+            noPhotosLabel.alpha = 1
+            noPhotosLabel.isEnabled = true
+        } else {
+            noPhotosLabel.alpha = 0
+            noPhotosLabel.isEnabled = false
         }
     }
     
@@ -284,10 +298,12 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     /******************************************************/
     //MARK: - Flickr API
     
-    func flickrGetPhotosNearPin(){
+    func flickrGetPhotosNearPin(radius: Double, tryAgain: Bool = false){
+        setNoPhotosLabelVisible(isVisible: false)
+        
         if let pin = pin {
             GCDBlackBox.runNetworkFunctionInBackground {
-                FlickrClient.sharedInstance.getFlickrSearchNearLatLong(pin.latitude, long: pin.longitude) { (results, error) in
+                FlickrClient.sharedInstance.getFlickrSearchNearLatLong(pin.latitude, long: pin.longitude, radius: radius) { (results, error) in
                     GCDBlackBox.performUIUpdatesOnMain {
                         if let flickrPhotos = results as? FlickrPhotoResults {
                             print("Successful getFlickrSearchNearLatLong.  Results: \(flickrPhotos)")
@@ -322,6 +338,20 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
                                 //there were no photos returned
                                 //TODO: Handle case where no photos returned
                                 print("There were no photos returned: \(flickrPhotos.photos)")
+                                
+                                //if we should try again if we get no photos
+                                
+                                if tryAgain {
+                                    //try again at 4x the radius
+                                    print("Trying to get photos again at 4x radius: \(radius)")
+                                    self.flickrGetPhotosNearPin(radius: radius*4, tryAgain: false)
+                                
+                                } else {
+                                //we will not try again, so tell the user
+                                    self.setNoPhotosLabelVisible(isVisible: true)
+                                    
+                                }
+                                
                             } //end checking for 0 photos
                             
                         } else {
@@ -378,7 +408,7 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         
         //if the contents is empty, the load some contents
         if photosToDisplay.count < 1 {
-            flickrGetPhotosNearPin()
+            flickrGetPhotosNearPin(radius: 5.0, tryAgain: true)
         }
             
         
