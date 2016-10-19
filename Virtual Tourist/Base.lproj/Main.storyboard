@@ -113,6 +113,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8M-gC-3Tj">
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="gfQ-hD-ltn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Delete Selected Photos">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deletePhotosButtonPressed:" destination="3H8-mY-ZXt" eventType="touchUpInside" id="aRs-XE-Ahn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -126,6 +139,9 @@
                             <constraint firstItem="w29-Hh-OUV" firstAttribute="top" secondItem="bOs-Es-BG1" secondAttribute="bottom" id="Y2D-iI-6el"/>
                             <constraint firstItem="SAc-kP-3Ke" firstAttribute="leading" secondItem="QYj-ta-uwR" secondAttribute="leadingMargin" constant="41" id="Ymo-ij-ILn"/>
                             <constraint firstItem="bOs-Es-BG1" firstAttribute="top" secondItem="QYj-ta-uwR" secondAttribute="top" id="c6c-1U-Tfk"/>
+                            <constraint firstItem="d8M-gC-3Tj" firstAttribute="leading" secondItem="QYj-ta-uwR" secondAttribute="leadingMargin" constant="40" id="jlM-4u-vJL"/>
+                            <constraint firstItem="Egy-BS-dLu" firstAttribute="top" secondItem="d8M-gC-3Tj" secondAttribute="bottom" constant="8" id="kFL-Mj-NE3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d8M-gC-3Tj" secondAttribute="trailing" constant="40" id="ok1-eP-Gt7"/>
                             <constraint firstItem="Egy-BS-dLu" firstAttribute="top" secondItem="SAc-kP-3Ke" secondAttribute="bottom" constant="8" id="qc8-dQ-oI5"/>
                             <constraint firstAttribute="trailing" secondItem="Aba-DK-xwi" secondAttribute="trailing" id="sdF-K4-N8a"/>
                             <constraint firstItem="w29-Hh-OUV" firstAttribute="leading" secondItem="QYj-ta-uwR" secondAttribute="leadingMargin" constant="-16" id="uHx-Sz-5yc"/>
@@ -133,6 +149,7 @@
                     </view>
                     <connections>
                         <outlet property="IBCollectionView" destination="Aba-DK-xwi" id="Cvl-Dw-Y0C"/>
+                        <outlet property="deletePhotosButton" destination="d8M-gC-3Tj" id="ZG1-Tq-b4W"/>
                         <outlet property="flowLayout" destination="Jw4-0P-hfN" id="3Jr-er-Cse"/>
                         <outlet property="mapView" destination="bOs-Es-BG1" id="Cvv-Fx-SMp"/>
                         <outlet property="newCollectionButton" destination="SAc-kP-3Ke" id="Mut-2l-HUQ"/>

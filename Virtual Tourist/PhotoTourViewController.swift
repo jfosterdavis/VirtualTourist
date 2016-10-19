@@ -16,7 +16,7 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     //veiws
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var IBCollectionView: UICollectionView!
-    @IBOutlet weak var newCollectionButton: UIButton!
+
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     //text field
@@ -25,6 +25,10 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     
     ///Number of photos to show in the collection view
     let numberPhotosToDisplay = 15
+    
+    //buttons
+    @IBOutlet weak var newCollectionButton: UIButton!
+    @IBOutlet weak var deletePhotosButton: UIButton!
     
 
     var pin: Pin?
@@ -57,6 +61,8 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         //flickrTest()
         
         setupCollectionView()
+        
+        buttonStateCheckAndSet()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,6 +115,42 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         
     }
     
+    @IBAction func deletePhotosButtonPressed(_ sender: AnyObject) {
+        
+        //TODO: delete selceted photos
+    }
+    
+    func buttonStateCheckAndSet() {
+        //if there are selected items, ensure the "Get new set of photos" button is enabled and the other is false
+        
+        if collectionView.indexPathsForSelectedItems!.isEmpty {
+            setNewCollectionButtonState(state: true)
+            setDeletePhotosButtonState(state: false)
+        } else {
+            setNewCollectionButtonState(state: false)
+            setDeletePhotosButtonState(state: true)
+        }
+    }
+    
+    func setDeletePhotosButtonState(state: Bool) {
+        deletePhotosButton.isEnabled = state
+        if state {
+            deletePhotosButton.alpha = 1
+        } else {
+            deletePhotosButton.alpha = 0
+        }
+    }
+    
+    func setNewCollectionButtonState(state: Bool) {
+        newCollectionButton.isEnabled = state
+        if state {
+            newCollectionButton.alpha = 1
+        } else {
+            newCollectionButton.alpha = 0
+        }
+    }
+    
+    
     
     /******************************************************/
     /******************* UICollectionView Delegate and Data Source **************/
@@ -151,6 +193,8 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
             cell.imageView!.alpha = 0.5
             cell.activityIndicator.alpha = 0
         }
+        
+        buttonStateCheckAndSet()
     }
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -159,6 +203,8 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
             cell.imageView!.alpha = 1
             cell.activityIndicator.alpha = 1
         }
+        
+        buttonStateCheckAndSet()
     }
    
     
