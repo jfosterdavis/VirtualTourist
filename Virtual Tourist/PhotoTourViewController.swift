@@ -66,12 +66,7 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         
         buttonStateCheckAndSet()
         
-        let titlePrimer = "Photos near "
-        if let name = pin?.title {
-            tourTitleTextField.text = titlePrimer + name + ":"
-        } else {
-            tourTitleTextField.text = titlePrimer + "Untitled Location:"
-        }
+        loadText()
         
         setNoPhotosLabelVisible(isVisible: false)
     }
@@ -87,14 +82,13 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
     /******************************************************/
 
     func loadText() {
-        
+        let titlePrimer = "Photos near "
+        if let name = pin?.title {
+            tourTitleTextField.text = titlePrimer + name + ":"
+        } else {
+            tourTitleTextField.text = titlePrimer + "Untitled Location:"
+        }
     }
-    
-    /******************************************************/
-    /******************* Collection Operations **************/
-    /******************************************************/
-    //MARK: - Collection Operations
-
     
     
     /******************************************************/
