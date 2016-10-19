@@ -185,20 +185,41 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
             let location = gestureRecognizer.location(in: mapView)
             let coordinate = mapView.convert(location,toCoordinateFrom: mapView)
             
-            // Add annotation:
-//            let newPin = MKPointAnnotation()
-//            newPin.coordinate = coordinate
-//            newPin.title = "test"
-            //TODO: Download geocode
-            
-            //TODO: Set title and subtitle
-            
             //TODO: Store the pin to the model
             let newPin = Pin(title: "Untitled", latitude: coordinate.latitude, longitude: coordinate.longitude, subtitle: nil, context: fetchedResultsController!.managedObjectContext)
             print("Just created a new Pin: \(newPin)")
             
-            mapView.addAnnotation(newPin)
-            mapView.selectAnnotation(newPin, animated: true)
+            let defaultName = "Untitled Location"
+            
+            let Geocoder = CLGeocoder()
+            Geocoder.reverseGeocodeLocation(CLLocation(latitude: newPin.latitude, longitude: newPin.longitude)) { (placemarks, error) in
+                
+                if let placemarks = placemarks {
+                    print("Got the following placemarks")
+                    for placemark in placemarks {
+                        print(placemark.name)
+                    }
+                    if let name =  placemarks[0].name {
+                        newPin.title = name
+                    } else {
+                        newPin.title = defaultName
+                    }
+                    
+                } else {
+                    //didn't get any placemarks
+                    print("Error obtaining Placemark")
+                    print(error)
+                    
+                    newPin.title = defaultName
+                }
+                
+                self.mapView.addAnnotation(newPin)
+                
+                //TODO: The following line doesn't seem to work now that is in the completion handler of the Geocoder.
+                self.mapView.selectAnnotation(newPin, animated: true)
+            }
+            
+            
         }
     }
     

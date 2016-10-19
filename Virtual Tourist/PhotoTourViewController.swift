@@ -63,6 +63,12 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         setupCollectionView()
         
         buttonStateCheckAndSet()
+        
+        if let name = pin?.title {
+            tourTitleTextField.text = name
+        } else {
+            tourTitleTextField.text = "Untitled Location"
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
