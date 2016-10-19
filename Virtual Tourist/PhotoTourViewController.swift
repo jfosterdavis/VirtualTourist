@@ -64,10 +64,11 @@ class PhotoTourViewController: CoreDataCollectionViewController, MKMapViewDelega
         
         buttonStateCheckAndSet()
         
+        let titlePrimer = "Photos near "
         if let name = pin?.title {
-            tourTitleTextField.text = name
+            tourTitleTextField.text = titlePrimer + name + ":"
         } else {
-            tourTitleTextField.text = "Untitled Location"
+            tourTitleTextField.text = titlePrimer + "Untitled Location:"
         }
     }
     
