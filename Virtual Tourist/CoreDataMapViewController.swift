@@ -72,17 +72,6 @@ extension CoreDataMapViewController: NSFetchedResultsControllerDelegate {
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         
-//        let set = IndexSet(integer: sectionIndex)
-//        
-//        switch (type) {
-//        case .insert:
-//            tableView.insertSections(set, with: .fade)
-//        case .delete:
-//            tableView.deleteSections(set, with: .fade)
-//        default:
-//            // irrelevant in our case
-//            break
-//        }
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
