@@ -215,8 +215,10 @@ class TourMapViewController: CoreDataMapViewController, UIGestureRecognizerDeleg
                 
                 self.mapView.addAnnotation(newPin)
                 
-                //TODO: The following line doesn't seem to work now that is in the completion handler of the Geocoder.
-                self.mapView.selectAnnotation(newPin, animated: true)
+                //for some reason when I wrap the selectAnnotation in a GCDBlackBox both it and the addAnnotation work as expected.  Otherwise, neither of them are animated.
+                GCDBlackBox.performUIUpdatesOnMain {
+                    self.mapView.selectAnnotation(newPin, animated: true)
+                }
             }
             
             
